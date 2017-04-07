@@ -15,7 +15,7 @@ namespace Presentacion.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Pagina web";
 
             return View();
         }
