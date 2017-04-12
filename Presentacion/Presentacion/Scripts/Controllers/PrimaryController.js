@@ -18,5 +18,6 @@ app.config(function ($routeProvider) {
 });
 
 app.controller("IndexController", function ($scope) {
-    $scope.Titulo = "Aplicacion del banco";
+    $scope.Titulo = "Aplicacion de agustin";
+    $scope.VerTitulo = true;
 });
