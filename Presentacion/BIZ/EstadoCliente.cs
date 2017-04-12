@@ -18,7 +18,7 @@ namespace BIZ {
 		Rechazado_ConAntecedentes_Negativos,
 		Dudoso,
 		Rechazado_SistemasCentralesBanco,
-		public BIZ.Cliente m_Cliente;
+		
 
 	}//end EstadoCliente
 
