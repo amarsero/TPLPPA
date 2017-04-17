@@ -10,8 +10,6 @@
 
 
 using BIZ;
-using System.Collections.Generic;
-
 namespace BIZ {
 	public class Tarjeta {
 

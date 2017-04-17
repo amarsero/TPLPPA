@@ -9,8 +9,6 @@
 
 
 
-using System.Collections.Generic;
-
 namespace BIZ {
 	public class Cliente {
 
@@ -63,7 +61,7 @@ namespace BIZ {
 		private uint _dniConyugue;
 		private string _domicilio;
 		private Cliente.EstadosCiviles _estadoCivil;
-		private System.DateTime _fechaNac;
+		private DateTime _fechaNac;
 		private float _ingresosMensualesAprox;
 		private string _nombre;
 		private uint _nroDocumento;
@@ -99,7 +97,7 @@ namespace BIZ {
 			set;
 		}
 
-		public System.DateTime FechaNac {
+		public DateTime FechaNac{
 			get;
 			set;
 		}
