@@ -194,6 +194,7 @@
     </Content>
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\Controllers\LoginController.js" />
+    <Content Include="Scripts\Controllers\SolicitudTarjetaController.js" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular-touch.min.js.map" />
     <Content Include="Scripts\angular-sanitize.min.js.map" />
@@ -949,6 +950,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="SPA\index.html" />
     <Content Include="SPA\login.html" />
+    <Content Include="SPA\SolicitudTarjeta.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
