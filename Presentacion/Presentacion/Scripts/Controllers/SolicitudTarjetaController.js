@@ -1,5 +1,5 @@
 ﻿angular.module('app').controller("SolicitudTarjetaController", ["$scope", "$location", function ($scope, $location) {
-
+    $scope.Procesando = false;
     $scope.Titulo = "Datos del nuevo cliente, solicitud nueva tarjeta.";
     $scope.estados = ["Soltero", "Casado", "Divorciado","Otro"];
 
@@ -11,7 +11,7 @@
         }
     }
   
-    var ProcesarSolicitud = function () {
+    $scope.ProcesarSolicitud = function () {
         $scope.Procesando = true;
         $scope.Tarea = "Obteniendo informacion del veraz";
     }

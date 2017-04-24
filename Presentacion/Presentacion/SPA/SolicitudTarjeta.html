@@ -4,7 +4,7 @@
 
         <div class="modal-content">
 
-            <div class="modal-body">
+            <div class="modal-body" ng-show="!Procesando">
                 <form novalidate="novalidate" id="formSignUp">
                     <div id="errorSignUp">
 
@@ -172,7 +172,12 @@
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary">Registrar</button>
+                    <button ng-click="ProcesarSolicitud()" type="button" class="btn btn-primary">Registrar</button>
+                    
             </div>
-        </div>
+            <div ng-show="Procesando" >
+                <h3>{{Tarea}}</h3>
+                <img height="100" width="100" src="../Images/loading.gif" />
+            </div>
+            </div>
     </div>

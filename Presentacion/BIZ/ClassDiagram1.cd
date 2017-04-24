@@ -30,7 +30,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="BIZ.Tarjeta">
-    <Position X="2.5" Y="0.5" Width="1.5" />
+    <Position X="2.5" Y="2" Width="1.5" />
     <NestedTypes>
       <Enum Name="BIZ.Tarjeta.Marcas" Collapsed="true">
         <TypeIdentifier>
@@ -44,29 +44,50 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>ABAAQBAAAAACAAQAAAAAAAAAAAABAAAAAAAAAEABAAw=</HashCode>
+      <HashCode>BBAAQBAACAACAAQAAAAAAAAAAAABAAAAAAAAAEABAAQ=</HashCode>
       <FileName>Tarjeta.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BIZ.Empleado">
-    <Position X="6.25" Y="0.5" Width="1.5" />
+    <Position X="4.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Empleado.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BIZ.SolicitudTarjetaFactory">
-    <Position X="6" Y="2.25" Width="2.25" />
+  <Class Name="BIZ.SolicitudesFactory">
+    <Position X="9.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAQAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AIAQAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SolicitudTarjetaFactory.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Enum Name="BIZ.EstadoTarjeta">
-    <Position X="4.25" Y="0.5" Width="1.5" />
+  <Class Name="BIZ.Terminal">
+    <Position X="4.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAgAAAAAAAAAAAABABAAAAAAAEAAAAAAAAAAQ=</HashCode>
+      <FileName>Terminal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BIZ.ImpresoraSingleton">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ImpresoraSingleton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="BIZ.EstadoTarjeta">
+    <Position X="6.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQQ=</HashCode>
       <FileName>EstadoTarjeta.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BIZ.EstadoCliente">
+    <Position X="6.25" Y="4.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAQAAAAAAAAAAAAAgAAAAAAAAAJA=</HashCode>
+      <FileName>EstadoCliente.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />
