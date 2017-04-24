@@ -11,9 +11,11 @@
 
 using BIZ;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace BIZ {
-	public class Tarjeta {
+    [DataContract]
+	public class Tarjeta : EntityBase{
 
 		public enum Marcas : int {
 
@@ -40,6 +42,7 @@ namespace BIZ {
 		private int _numero;
 		private int _saldoMax;
 		private Tarjeta.Tipos _tipo;
+
 		public List<BIZ.Tarjeta> Extensiones;
 		public BIZ.Cliente m_Cliente;
 		public BIZ.EstadoTarjeta m_EstadoTarjeta;
@@ -51,22 +54,22 @@ namespace BIZ {
 		~Tarjeta(){
 
 		}
-
+        [DataMember]
 		public Marcas Marca{
 			get;
 			set;
 		}
-
+        [DataMember]
 		public int Numero{
 			get;
 			set;
 		}
-
+        [DataMember]
 		public int SaldoMax{
 			get;
 			set;
 		}
-
+        [DataMember]
 		public Tipos Tipo{
 			get;
 			set;
