@@ -10,9 +10,11 @@
 
 
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace BIZ {
-	public class Cliente {
+    [DataContract]
+	public class Cliente : EntityBase {
 
 		public enum tiposDocumentos : int {
 
@@ -79,61 +81,62 @@ namespace BIZ {
 
 		}
 
+        [DataMember]
 		public List<string> Bancos{
 			get;
 			set;
 		}
-
+        [DataMember]
 		public uint Cuit{
 			get;
 			set;
 		}
-
+        [DataMember]
 		public string Domicilio{
 			get;
 			set;
 		}
-
+        [DataMember]
 		public EstadosCiviles EstadoCivil{
 			get;
 			set;
 		}
-
+        [DataMember]
 		public System.DateTime FechaNac {
 			get;
 			set;
 		}
-
+        [DataMember]
 		public float IngresosMensualesAprox{
 			get;
 			set;
 		}
-
+        [DataMember]
 		public string Nombre{
 			get;
 			set;
 		}
-
+        [DataMember]
 		public uint NroDocumento{
 			get;
 			set;
 		}
-
+        [DataMember]
 		public string RutaImg{
 			get;
 			set;
 		}
-
+        [DataMember]
 		public Sexos Sexo{
 			get;
 			set;
 		}
-
+        [DataMember]
 		public SituacionesLaborales SituacionLaboral{
 			get;
 			set;
 		}
-
+        [DataMember]
 		public tiposDocumentos TipoDocumento{
 			get;
 			set;

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26228.9
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentacion", "Presentacion\Presentacion.csproj", "{27171FEB-1239-4B5C-8AFC-6418BE24AA87}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -42,6 +42,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{2D8880B5-B602-4440-B533-5DA884AD87FA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{E3D4787D-6DA3-4D75-8F77-28C9D6439449}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{348FAB18-281B-406C-BBEB-421DB300CDC4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,6 +76,10 @@ Global
 		{D135D594-0815-4D60-97B3-F5BE979AB0F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D135D594-0815-4D60-97B3-F5BE979AB0F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D135D594-0815-4D60-97B3-F5BE979AB0F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{348FAB18-281B-406C-BBEB-421DB300CDC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{348FAB18-281B-406C-BBEB-421DB300CDC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{348FAB18-281B-406C-BBEB-421DB300CDC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{348FAB18-281B-406C-BBEB-421DB300CDC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -83,5 +91,6 @@ Global
 		{2B843984-2521-43C9-A2D7-3A63E644954A} = {4E1621DB-508F-4D40-8216-D664A971232B}
 		{15373CFE-E14A-4E72-815D-5B76F6D28E51} = {2D8880B5-B602-4440-B533-5DA884AD87FA}
 		{D135D594-0815-4D60-97B3-F5BE979AB0F2} = {B6F4BCA7-E475-4991-B242-3A0C3B8E0461}
+		{348FAB18-281B-406C-BBEB-421DB300CDC4} = {E3D4787D-6DA3-4D75-8F77-28C9D6439449}
 	EndGlobalSection
 EndGlobal
