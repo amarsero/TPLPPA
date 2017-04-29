@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Estacionamiento DXC</title>
+    <title>Sistema de gestión de tarjetas</title>
 
     <link href="/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="/Content/Site.css" rel="stylesheet" />
@@ -33,12 +33,33 @@
                 </div>
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#!/login">Login</a></li>
-                    <li><a href="#!/solicitudtarjeta">Registrar Solicitud Tarjeta</a></li>
-                    <li><a href="#!/">Funcionalidad 2</a></li>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle">Administrador<strong class="caret"></strong></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">Registrar nuevo usuario</a>
+                            </li>
+                            <li>
+                                <a href="#">Gestionar usuarios</a>
+                            </li>
+                            <li>
+                                <a href="#">Gestion de parametros</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li><a href="#!/solicitudtarjeta">Registrar nuevo cliente titular</a></li>
+                    <li><a href="#!/solicitudtarjeta">Asignar tarjeta extension</a></li>
+                    <li><a href="#!/solicitudtarjeta">Asignacion manual tarjeta cliente</a></li>
+                    <li><a href="#!/solicitudtarjeta">Impresion manual de tarjetas</a></li>
+
                 </ul>
             </div>
+
+           
         </nav>
+</div>
+        
         <div ng-view></div>
         <footer>            
         </footer>
