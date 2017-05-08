@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentacion", "Presentacion\Presentacion.csproj", "{27171FEB-1239-4B5C-8AFC-6418BE24AA87}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -35,6 +35,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{59724A37-E763-4434-9376-44CF27DA1F6E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{B6F4BCA7-E475-4991-B242-3A0C3B8E0461}"
+	ProjectSection(SolutionItems) = preProject
+		DAL\BDLPPA.Context.cs = DAL\BDLPPA.Context.cs
+		DAL\BDLPPA.Context.tt = DAL\BDLPPA.Context.tt
+		DAL\BDLPPA.cs = DAL\BDLPPA.cs
+		DAL\BDLPPA.Designer.cs = DAL\BDLPPA.Designer.cs
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework", "Framework\Framework.csproj", "{D135D594-0815-4D60-97B3-F5BE979AB0F2}"
 EndProject

@@ -43,7 +43,7 @@ namespace BIZ {
 		private int _saldoMax;
 		private Tarjeta.Tipos _tipo;
 
-		public List<BIZ.Tarjeta> Extensiones;
+		public BIZ.Tarjeta Extensiones;
 		public BIZ.Cliente m_Cliente;
 		public BIZ.EstadoTarjeta m_EstadoTarjeta;
 

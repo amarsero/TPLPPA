@@ -29,6 +29,9 @@ namespace BIZ {
 
 		}
 
+        /// <summary>
+        /// Descripcion detallada de la terminal, puede poseer lugar, estado de la misma, sucursal, etc.
+        /// </summary>
 		public string Descripcion{
 			get{
 				return _Descripcion;
