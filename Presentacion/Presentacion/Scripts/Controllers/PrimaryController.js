@@ -18,6 +18,12 @@ app.config(function ($routeProvider) {
             controller: 'SolicitudTarjetaController'
         })
 
+        .when('/solicitudtarjetaextension',
+        {
+            templateUrl: 'SolicitudTarjetaExtension.html',
+            controller: 'SolicitudTarjetaExtensionController'
+        })
+
         .otherwise({
             redirectTo: '/'
         });
