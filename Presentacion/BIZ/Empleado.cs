@@ -12,6 +12,7 @@
 namespace BIZ {
 	public class Empleado {
 
+
 		public Empleado(){
 
 		}

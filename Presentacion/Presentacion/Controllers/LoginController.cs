@@ -16,10 +16,13 @@ namespace Presentacion.Controllers
 
         [HttpGet]
         //Metodo para obtener el usuario actual conectado, despues cambiale el retorno a un objeto de tipo Usuario o Empleado
-        public Boolean GetCurrentUser()
+        public BIZ.Cliente GetCurrentUser()
         {
+            BIZ.Cliente Empleado = new BIZ.Cliente();
+            Empleado.Cuit = 123123123;
+
             //Aca poner un breackpoint y fijate si te entra, anda probando tocando la configuracion del login service hasta que llega aca.
-            return true;
+            return Empleado;
         }
     }
 }
