@@ -16,6 +16,6 @@
 
     // Cada vez que se cargue la web de login se va a llamar a este metodo asincronicamente para verificar si la sesion esta no iniciada.
     //Despues para probar descomenta lo de abajo:
-    CurrentUser();
+   // CurrentUser();
 
 }])

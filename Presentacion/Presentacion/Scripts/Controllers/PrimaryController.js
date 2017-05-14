@@ -29,7 +29,3 @@ app.config(function ($routeProvider) {
         });
 });
 
-app.controller("IndexController", function ($scope) {
-    $scope.Titulo = "Aplicacion de agustin";
-    $scope.VerTitulo = true;
-});

@@ -143,6 +143,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\SolicitudTarjetaExtensionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -198,6 +199,7 @@
     </Content>
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\Controllers\LoginController.js" />
+    <Content Include="Scripts\Controllers\IndexController.js" />
     <Content Include="Scripts\Controllers\SolicitudTarjetaController.js" />
     <Content Include="Scripts\Controllers\SolicitudTarjetaExtensionController.js" />
     <Content Include="Scripts\errors.json" />
@@ -953,6 +955,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Services\SolicitudTarjetaExtensionService.js" />
     <Content Include="Scripts\Services\LoginService.js" />
     <Content Include="SPA\index.html" />
     <Content Include="SPA\login.html" />
@@ -978,6 +981,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Login\" />
+    <Folder Include="Views\SolicitudTarjetaExtension\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -998,6 +1002,10 @@
     <ProjectReference Include="..\BIZ\BIZ.csproj">
       <Project>{c0bb125b-7c20-4d5e-9752-974ae67a8741}</Project>
       <Name>BIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{c0be5c9f-3338-43a0-8fd4-cad03d41e074}</Project>
+      <Name>BLL</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -1,47 +1,51 @@
 ﻿<div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <h3>
-                Asignar tarjeta extensión
-            </h3>
-            <br />
-            <div ng-show="!TitularObtenido">
-                <p class="lead">
-                    Ingrese el nombre del titular de la cuenta.
-                </p>
-                <form role="form" class="form-inline">
-                    <div class="form-group">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <h3>
+                        Asignar tarjeta extensión
+                    </h3>
+                    <br />
+                    <div ng-show="!TitularObtenido">
+                        <p class="lead">
+                            Ingrese el DNI del titular de la cuenta.
+                        </p>
+                        <form role="form" class="form-inline">
+                            <div class="form-group">
 
-                        <label for="nombreTitular">
-                            Nombre del Titular
-                        </label>
-                        <input ng-model="nombreTitular" type="text" class="form-control" id="nombreTitular" />
+                                <label for="nombreTitular">
+                                    DNI del titular
+                                </label>
+                                <input ng-model="dniTitular" type="text" class="form-control" id="dniTitular" />
+                            </div>
+                            <button ng-click="mostrarDatosConyuge()" class="btn btn-default">
+                                Aceptar
+                            </button>
+                        </form>
                     </div>
-                    <button ng-click="mostrarDatosConyuge()" class="btn btn-default">
-                        Aceptar
-                    </button>
-                </form>
-            </div>
-            <div ng-show="TitularObtenido">
-                <p>
-                    {{nombreTitular}} tiene de conyuge a {{NombreConyuge}} con el DNI {{DNIConyuge}}.
-                </p>
-                <p class="lead">
-                    Ingrese el monto máximo para la extensión.
-                </p>
-                <form role="form">
-                    <div class="form-group">
+                    <div ng-show="TitularObtenido">
+                        <p>
+                            {{nombreTitular}} con DNI {{dniTitular}} tiene de conyuge a {{nombreConyuge}} con el DNI {{dniConyuge}}.
+                        </p>
+                        <p class="lead">
+                            Ingrese el monto máximo para la extensión.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
 
-                        <label for="montoExtension">
-                            Monto
-                        </label>
-                        <input type="number" class="form-control" id="montoExtension" />
+                                <label for="montoExtension">
+                                    Monto
+                                </label>
+                                <input type="number" class="form-control" id="montoExtension" />
+                            </div>
+
+                            <button type="submit" class="btn btn-default">
+                                Crear extensión
+                            </button>
+                        </form>
                     </div>
-
-                    <button type="submit" class="btn btn-default">
-                        Crear extensión
-                    </button>
-                </form>
+                </div>
             </div>
         </div>
     </div>

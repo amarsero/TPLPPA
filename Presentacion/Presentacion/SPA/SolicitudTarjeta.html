@@ -42,11 +42,11 @@
                                 <span class="glyphicon glyphicon-user"></span>
 
                                 <select name="generos" class="form-control" title="Genero"
-                                        <option value="black">Black</option>
+                                    <option value="black">Black</option>
                                     <option selected="selected" disabled="disabled" value="femenino">Sexo</option>
-                                        <option value="femenino">Femenino</option>
-                                        <option value="masculino">Masculino</option>
-                                    </select>
+                                    <option value="femenino">Femenino</option>
+                                    <option value="masculino">Masculino</option>
+                                </select>
 
                                 <span class="glyphicon glyphicon-info-sign"></span>
 
@@ -127,7 +127,7 @@
                                     <span class="glyphicon glyphicon-user"></span>
 
                                     <select name="generos" class="form-control" title="Genero"
-                                        <option  value="femenino">Sexo</option>
+                                        <option value="femenino">Sexo</option>
                                         <option selected="selected" disabled="disabled" value="femenino">Sexo</option>
                                         <option value="femenino">Femenino</option>
                                         <option value="masculino">Masculino</option>
@@ -173,11 +173,13 @@
                         </div>
                     </div>
                     <button ng-click="ProcesarSolicitud()" type="button" class="btn btn-primary">Registrar</button>
-                    
+                    </form>
+
             </div>
-            <div ng-show="Procesando" >
+            <div ng-show="Procesando">
                 <h3>{{Tarea}}</h3>
                 <img height="100" width="100" src="../Images/loading.gif" />
             </div>
-            </div>
+        </div>
     </div>
+</div>
