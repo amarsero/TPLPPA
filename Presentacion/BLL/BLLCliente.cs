@@ -15,5 +15,12 @@ namespace BLL
 
             return dao.ObtenerClientePorDNI(dni);
         }
+        public void CrearCliente(string nombre, int dni)
+        {
+
+            DAL.DAOCliente dao = new DAL.DAOCliente();
+
+            dao.CrearCliente(nombre,dni);
+        }
     }
 }

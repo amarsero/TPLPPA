@@ -8,9 +8,10 @@ namespace DAL
 {
     public class DAOCliente
     {
+        static List<BIZ.Cliente> lista = new List<BIZ.Cliente>();
         public BIZ.Cliente ObtenerClientePorDNI(int DNI)
         {
-            List<BIZ.Cliente> lista = new List<BIZ.Cliente>();
+
             lista.Add(new BIZ.Cliente() { Nombre = "Esteban Quito", NroDocumento = 12345678 });
             for (int i = 0; i < lista.Count; i++)
             {
@@ -22,6 +23,11 @@ namespace DAL
 
             return null;
 
+        }
+
+        public void CrearCliente(string nombre, int dni)
+        {
+            lista.Add(new BIZ.Cliente() { Nombre = nombre, NroDocumento = (uint)dni });
         }
     }
 }

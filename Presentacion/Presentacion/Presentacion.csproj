@@ -143,6 +143,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\SolicitudTarjetaController.cs" />
     <Compile Include="Controllers\SolicitudTarjetaExtensionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -955,6 +956,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Services\SolicitudTarjetaService.js" />
     <Content Include="Scripts\Services\SolicitudTarjetaExtensionService.js" />
     <Content Include="Scripts\Services\LoginService.js" />
     <Content Include="SPA\index.html" />
@@ -982,6 +984,7 @@
     <Folder Include="Models\" />
     <Folder Include="Views\Login\" />
     <Folder Include="Views\SolicitudTarjetaExtension\" />
+    <Folder Include="Views\SolicitudTarjeta\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
