@@ -49,12 +49,49 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cliente.cs">
+      <DependentUpon>DB_LPPA.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAOCliente.cs" />
+    <Compile Include="DAOLogin.cs" />
+    <Compile Include="DB_LPPA.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_LPPA.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB_LPPA.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_LPPA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB_LPPA.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_LPPA.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Empleado.cs">
+      <DependentUpon>DB_LPPA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HistoricoSolicitudTarjetas.cs">
+      <DependentUpon>DB_LPPA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Impresora.cs">
+      <DependentUpon>DB_LPPA.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>DB_LPPA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tarjeta.cs">
+      <DependentUpon>DB_LPPA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Terminal.cs">
+      <DependentUpon>DB_LPPA.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -65,6 +102,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <EntityDeploy Include="DB_LPPA.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DB_LPPA.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DB_LPPA.edmx.diagram">
+      <DependentUpon>DB_LPPA.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -73,6 +117,18 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DB_LPPA.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB_LPPA.edmx</DependentUpon>
+      <LastGenOutput>DB_LPPA.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DB_LPPA.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB_LPPA.edmx</DependentUpon>
+      <LastGenOutput>DB_LPPA.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

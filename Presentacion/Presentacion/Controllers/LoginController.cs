@@ -1,7 +1,13 @@
-﻿using System;
+﻿using Presentacion.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.UI.WebControls;
+using System.Threading.Tasks;
+using System.Drawing;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web.Mvc;
 
 namespace Presentacion.Controllers
@@ -23,6 +29,25 @@ namespace Presentacion.Controllers
 
             //Aca poner un breackpoint y fijate si te entra, anda probando tocando la configuracion del login service hasta que llega aca.
             return Empleado;
+        }
+
+        [HttpGet]
+        public string IniciarSesion(string usuario, string password)
+        {
+            try
+            {
+                BIZ.Empleado Empelado = new BIZ.Empleado();
+                BLL.BLLLogin Login = new BLL.BLLLogin();
+                Empelado = Login.IniciarSesion(usuario,password);
+                return Newtonsoft.Json.JsonConvert.SerializeObject(Empelado);
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("Usuario o contraseña incorrectos.");
+            }
+
+
+
         }
     }
 }
