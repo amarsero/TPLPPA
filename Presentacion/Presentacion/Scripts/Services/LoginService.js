@@ -13,5 +13,17 @@
 
     };
 
+    service.IniciarSesion = function (User) {
+        var promise = $http({
+            method: 'get',
+            encoding: 'JSON',
+            url: '/Login/IniciarSesion',
+            params: {usuario: User.Usuario, password: User.Password}
+        });
+
+        return $q.when(promise);
+
+    };
+
     return service;
 });
