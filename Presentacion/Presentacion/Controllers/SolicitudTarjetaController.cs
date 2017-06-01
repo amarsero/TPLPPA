@@ -19,7 +19,9 @@ namespace Presentacion.Controllers
         public void CrearCliente(string nombre, int dni)
         {
             BLL.BLLCliente bll = new BLL.BLLCliente();
-            bll.CrearCliente(nombre,dni);
+            BIZ.Cliente Cliente = new BIZ.Cliente();
+
+            bll.CrearCliente(Cliente);
         }
 
 	}

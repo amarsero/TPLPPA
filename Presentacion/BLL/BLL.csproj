@@ -43,6 +43,7 @@
     <Compile Include="BLLCliente.cs" />
     <Compile Include="BLLLogin.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Mapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

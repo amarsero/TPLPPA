@@ -10,7 +10,7 @@ angular.module('app').controller("SolicitudTarjetaExtensionController", ["$scope
     $scope.mostrarDatosConyuge = function () {
         SolicitudTarjetaExtensionService.ObtenerClientePorDNI($scope.dniTitular).then(function (response) {
 
-            if (response.data != "") {
+            if (response.data.Nombre != null) {
                 $scope.dniTitular = response.data.NroDocumento;
                 $scope.nombreTitular = response.data.Nombre;
                 fuckyoumom = response;

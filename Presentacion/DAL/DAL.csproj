@@ -52,6 +52,7 @@
     <Compile Include="Cliente.cs">
       <DependentUpon>DB_LPPA.tt</DependentUpon>
     </Compile>
+    <Compile Include="Conexion.cs" />
     <Compile Include="DAOCliente.cs" />
     <Compile Include="DAOLogin.cs" />
     <Compile Include="DB_LPPA.Context.cs">
@@ -124,6 +125,7 @@
       <DependentUpon>DB_LPPA.edmx</DependentUpon>
       <LastGenOutput>DB_LPPA.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="DB_LPPA.edmx.sql" />
     <Content Include="DB_LPPA.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DB_LPPA.edmx</DependentUpon>

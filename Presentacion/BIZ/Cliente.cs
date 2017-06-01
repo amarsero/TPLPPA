@@ -16,7 +16,7 @@ namespace BIZ {
     [DataContract]
 	public class Cliente : EntityBase {
 
-		public enum tiposDocumentos : int {
+		public enum TiposDocumentos : int {
 
 			DNI,
 			CI,
@@ -60,18 +60,23 @@ namespace BIZ {
 		/// <summary>
 		/// end SituacionesLaborales
 		/// </summary>
-		private List<string> _bancos;
-		private uint _cuit;
-		private uint _dniConyugue;
+		private int _cuit;
+        private int? _dniConyugue;
+
+        public int? DniConyugue
+        {
+            get { return _dniConyugue; }
+            set { _dniConyugue = value; }
+        }
 		private string _domicilio;
 		private Cliente.EstadosCiviles _estadoCivil;
 		private System.DateTime _fechaNac;
-		private float _ingresosMensualesAprox;
+		private int? _ingresosMensualesAprox;
 		private string _nombre;
-		private uint _nroDocumento;
+		private int _nroDocumento;
 		private Cliente.Sexos _sexo;
 		private Cliente.SituacionesLaborales _situacionLaboral;
-		private Cliente.tiposDocumentos _tipoDocumento;
+		private Cliente.TiposDocumentos _tipoDocumento;
 
 		public Cliente(){
 
@@ -81,13 +86,9 @@ namespace BIZ {
 
 		}
 
+
         [DataMember]
-		public List<string> Bancos{
-			get;
-			set;
-		}
-        [DataMember]
-		public uint Cuit{
+		public int Cuit{
 			get;
 			set;
 		}
@@ -107,7 +108,7 @@ namespace BIZ {
 			set;
 		}
         [DataMember]
-		public float IngresosMensualesAprox{
+		public int? IngresosMensualesAprox{
 			get;
 			set;
 		}
@@ -117,14 +118,17 @@ namespace BIZ {
 			set;
 		}
         [DataMember]
-		public uint NroDocumento{
+		public int NroDocumento{
 			get;
 			set;
 		}
         [DataMember]
 		public string RutaImg{
-			get;
-			set;
+			get
+            {
+                return Nombre + NroDocumento.ToString()+".jpg";
+            }
+		    private set{}
 		}
         [DataMember]
 		public Sexos Sexo{
@@ -137,7 +141,7 @@ namespace BIZ {
 			set;
 		}
         [DataMember]
-		public tiposDocumentos TipoDocumento{
+		public TiposDocumentos TipoDocumento{
 			get;
 			set;
 		}
