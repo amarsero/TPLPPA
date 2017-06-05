@@ -16,20 +16,29 @@ namespace Presentacion.Controllers
         }
 
         [HttpPost]
-        public void CrearCliente(int? CUIT,int? DniConyuge,string Domicilio, int? EstadoCivil, DateTime FechaNacimiento,
-        int? IngresoMensualAprox,string Nombre,int? DNI,int? Sexo,int? SituacionLaboral,int? TipoDocumento,int? Banco)
+        public void CrearCliente(int? CUIT, int? DniConyuge, string Domicilio, int? EstadoCivil, DateTime FechaNacimiento,
+        int? IngresoMensualAprox, string Nombre, int? DNI, int? Sexo, int? SituacionLaboral, int? TipoDocumento, int? Banco)
         {
-            BLL.BLLCliente bll = new BLL.BLLCliente();
+            try
+            {
+                BLL.BLLCliente bll = new BLL.BLLCliente();
 
-            BIZ.Cliente Cliente = new BIZ.Cliente();
-            ClienteMapper(CUIT, DniConyuge, Domicilio, EstadoCivil, FechaNacimiento, IngresoMensualAprox, Nombre, Sexo, SituacionLaboral, Banco, Cliente);
+                BIZ.Cliente Cliente = new BIZ.Cliente();
+                ClienteMapper(CUIT, DniConyuge, Domicilio, EstadoCivil, DNI, FechaNacimiento, IngresoMensualAprox, Nombre, Sexo, SituacionLaboral, Banco, Cliente);
 
-            bll.CrearCliente(Cliente);
+                bll.CrearCliente(Cliente);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
         }
 
-        private static void ClienteMapper(int? CUIT, int? DniConyuge, string Domicilio, int? EstadoCivil, DateTime FechaNacimiento, int? IngresoMensualAprox, string Nombre, int? Sexo, int? SituacionLaboral, int? Banco, BIZ.Cliente Cliente)
+        private static void ClienteMapper(int? CUIT, int? DniConyuge, string Domicilio, int? EstadoCivil, int? DNI, DateTime FechaNacimiento, int? IngresoMensualAprox, string Nombre, int? Sexo, int? SituacionLaboral, int? Banco, BIZ.Cliente Cliente)
         {
             Cliente.Banco = (BIZ.Cliente.Bancos)Banco;
+            Cliente.NroDocumento = (int)DNI;
             Cliente.Cuit = (int)CUIT;
             Cliente.DniConyugue = DniConyuge;
             Cliente.Domicilio = Domicilio;
