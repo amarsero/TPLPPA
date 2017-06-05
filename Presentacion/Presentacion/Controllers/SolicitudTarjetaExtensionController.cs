@@ -17,7 +17,10 @@ namespace Presentacion.Controllers
         public string ObtenerClientePorDNI(int dni)
         {
             BLL.BLLCliente bll = new BLL.BLLCliente();
-            BIZ.Cliente cliente = bll.ObtenerClientePorDNI(dni);
+            BIZ.Cliente[] cliente = new BIZ.Cliente[2];
+            cliente[0] = bll.ObtenerClientePorDNI(dni);
+            if (cliente[0].DniConyugue!= null)
+            cliente[1] = bll.ObtenerClientePorDNI((int)cliente[0].DniConyugue);
 
             return Newtonsoft.Json.JsonConvert.SerializeObject(cliente);
         }
