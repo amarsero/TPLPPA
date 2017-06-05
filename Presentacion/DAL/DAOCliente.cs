@@ -38,7 +38,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-
+                throw new Exception("Error al coenctare a la base de datos");
             }
             
 

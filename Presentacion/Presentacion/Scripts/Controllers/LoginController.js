@@ -19,7 +19,7 @@
         };
         LoginService.IniciarSesion(user).then(
             function (d) {
-                $scope.Titulo = "Sesion iniciada";
+                $scope.Titulo = "Sesion iniciada, bienvenido " + d.data.Nombre;;
             },
             function (error) {
 
