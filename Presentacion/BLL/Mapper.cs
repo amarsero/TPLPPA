@@ -27,5 +27,25 @@ namespace BLL
 
             return nuevo;
         }
+
+        public static DAL.Cliente Map(BIZ.Cliente viejo)
+        {
+            DAL.Cliente nuevo = new DAL.Cliente();
+
+            nuevo.CUIT = viejo.Cuit;
+            nuevo.DniConyuge = viejo.DniConyugue;
+            nuevo.Domicilio = viejo.Domicilio;
+            nuevo.EstadoCivil = (int)viejo.EstadoCivil;
+            nuevo.FechaNacimiento = viejo.FechaNac;
+            nuevo.IngresoMesualAprox = viejo.IngresosMensualesAprox;
+            nuevo.Nombre = viejo.Nombre;
+            nuevo.DNI = viejo.NroDocumento;
+            nuevo.Sexo = (int)viejo.Sexo;
+            nuevo.SituacionLaboral = (int)viejo.SituacionLaboral;
+            nuevo.TipoDocumento = (int)viejo.TipoDocumento;
+            
+
+            return nuevo;
+        }
     }
 }

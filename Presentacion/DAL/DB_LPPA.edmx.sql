@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/31/2017 19:44:05
--- Generated from EDMX file: C:\Users\Agustin\Documents\Git\TPLPPA\Presentacion\DAL\DB_LPPA.edmx
+-- Date Created: 06/04/2017 20:07:19
+-- Generated from EDMX file: C:\Users\arigos\Source\Repos\TPLPPA\Presentacion\DAL\DB_LPPA.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [LPPADATABASE];
+USE [LPPA];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -20,26 +20,26 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_Cliente_Cliente]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Cliente] DROP CONSTRAINT [FK_Cliente_Cliente];
 GO
-IF OBJECT_ID(N'[LPPAModelStoreContainer].[FK_HistoricoSolicitudTarjetas_Impresora]', 'F') IS NOT NULL
-    ALTER TABLE [LPPAModelStoreContainer].[HistoricoSolicitudTarjetas] DROP CONSTRAINT [FK_HistoricoSolicitudTarjetas_Impresora];
-GO
-IF OBJECT_ID(N'[LPPAModelStoreContainer].[FK_HistoricoSolicitudTarjetas_Tarjeta]', 'F') IS NOT NULL
-    ALTER TABLE [LPPAModelStoreContainer].[HistoricoSolicitudTarjetas] DROP CONSTRAINT [FK_HistoricoSolicitudTarjetas_Tarjeta];
-GO
-IF OBJECT_ID(N'[LPPAModelStoreContainer].[FK_HistoricoSolicitudTarjetas_Terminal]', 'F') IS NOT NULL
-    ALTER TABLE [LPPAModelStoreContainer].[HistoricoSolicitudTarjetas] DROP CONSTRAINT [FK_HistoricoSolicitudTarjetas_Terminal];
-GO
 IF OBJECT_ID(N'[dbo].[FK_Tarjeta_Cliente]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Tarjeta] DROP CONSTRAINT [FK_Tarjeta_Cliente];
-GO
-IF OBJECT_ID(N'[dbo].[FK_Tarjeta_Tarjeta]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Tarjeta] DROP CONSTRAINT [FK_Tarjeta_Tarjeta];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Terminal_Empleado]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Terminal] DROP CONSTRAINT [FK_Terminal_Empleado];
 GO
+IF OBJECT_ID(N'[dbo].[FK_HistoricoSolicitudTarjetas_Impresora]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[HistoricoSolicitudTarjetas] DROP CONSTRAINT [FK_HistoricoSolicitudTarjetas_Impresora];
+GO
 IF OBJECT_ID(N'[dbo].[FK_Terminal_Impresora]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Terminal] DROP CONSTRAINT [FK_Terminal_Impresora];
+GO
+IF OBJECT_ID(N'[dbo].[FK_HistoricoSolicitudTarjetas_Tarjeta]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[HistoricoSolicitudTarjetas] DROP CONSTRAINT [FK_HistoricoSolicitudTarjetas_Tarjeta];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Tarjeta_Tarjeta]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Tarjeta] DROP CONSTRAINT [FK_Tarjeta_Tarjeta];
+GO
+IF OBJECT_ID(N'[dbo].[FK_HistoricoSolicitudTarjetas_Terminal]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[HistoricoSolicitudTarjetas] DROP CONSTRAINT [FK_HistoricoSolicitudTarjetas_Terminal];
 GO
 
 -- --------------------------------------------------
@@ -64,8 +64,8 @@ GO
 IF OBJECT_ID(N'[dbo].[Terminal]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Terminal];
 GO
-IF OBJECT_ID(N'[LPPAModelStoreContainer].[HistoricoSolicitudTarjetas]', 'U') IS NOT NULL
-    DROP TABLE [LPPAModelStoreContainer].[HistoricoSolicitudTarjetas];
+IF OBJECT_ID(N'[dbo].[HistoricoSolicitudTarjetas]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[HistoricoSolicitudTarjetas];
 GO
 
 -- --------------------------------------------------
@@ -205,6 +205,7 @@ ADD CONSTRAINT [FK_Cliente_Cliente]
     REFERENCES [dbo].[Cliente]
         ([DNI])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_Cliente_Cliente'
 CREATE INDEX [IX_FK_Cliente_Cliente]
@@ -219,6 +220,7 @@ ADD CONSTRAINT [FK_Tarjeta_Cliente]
     REFERENCES [dbo].[Cliente]
         ([DNI])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_Tarjeta_Cliente'
 CREATE INDEX [IX_FK_Tarjeta_Cliente]
@@ -233,6 +235,7 @@ ADD CONSTRAINT [FK_Terminal_Empleado]
     REFERENCES [dbo].[Empleado]
         ([DNI])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_Terminal_Empleado'
 CREATE INDEX [IX_FK_Terminal_Empleado]
@@ -247,6 +250,7 @@ ADD CONSTRAINT [FK_HistoricoSolicitudTarjetas_Impresora]
     REFERENCES [dbo].[Impresora]
         ([CodImpresora])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_HistoricoSolicitudTarjetas_Impresora'
 CREATE INDEX [IX_FK_HistoricoSolicitudTarjetas_Impresora]
@@ -261,6 +265,7 @@ ADD CONSTRAINT [FK_Terminal_Impresora]
     REFERENCES [dbo].[Impresora]
         ([CodImpresora])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_Terminal_Impresora'
 CREATE INDEX [IX_FK_Terminal_Impresora]
@@ -275,6 +280,7 @@ ADD CONSTRAINT [FK_HistoricoSolicitudTarjetas_Tarjeta]
     REFERENCES [dbo].[Tarjeta]
         ([Numero])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_HistoricoSolicitudTarjetas_Tarjeta'
 CREATE INDEX [IX_FK_HistoricoSolicitudTarjetas_Tarjeta]
@@ -289,6 +295,7 @@ ADD CONSTRAINT [FK_Tarjeta_Tarjeta]
     REFERENCES [dbo].[Tarjeta]
         ([Numero])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_Tarjeta_Tarjeta'
 CREATE INDEX [IX_FK_Tarjeta_Tarjeta]

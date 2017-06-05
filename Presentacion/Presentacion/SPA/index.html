@@ -32,8 +32,8 @@
 </head>
 <body ng-app="app" ng-controller="IndexController">
 
-    <div class="container body-content" style="text-align:center;">
-        <nav class="navbar navbar-inverse">
+
+        <!--<nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" ng-show="verTitulo" href="#">{{Titulo}}</a>
@@ -64,12 +64,65 @@
             </div>
 
            
-        </nav>
-</div>
+        </nav>-->
+
+        <div class="navbar navbar-inverse navbar-twitch" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        <span class="small-nav"> <span class="logo"></span> </span>
+                        <span class="full-nav"> < Bootsnipp > </span>
+                    </a>
+                </div>
+                <div class="">
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="#">
+                                <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Home">
+                                    <span class="glyphicon glyphicon-home"></span>
+                                </span>
+                                <span class="full-nav"> Home </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#!/solicitudtarjeta">
+                                <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Solicitud tarjeta">
+                                    <span  class="glyphicon glyphicon-credit-card"></span>
+                                </span>
+                                <span class="full-nav">Registrar tarjeta de nuevo cliente</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#!/solicitudtarjetaextension">
+                                <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Solicitar tarjeta extension">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                                </span>
+                                <span class="full-nav"> Solicitar tarjeta extension </span>
+                            </a>
+                        </li>
+
+             
+                    </ul>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#">Registrar nuevo usuario</a>
+                        </li>
+                        <li>
+                            <a href="#">Gestionar usuarios</a>
+                        </li>
+                        <li>
+                            <a href="#">Gestion de parametros</a>
+                        </li>
+
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+
         
-        <div ng-view></div>
+        <div class="contenido_pagina" ng-view></div>
         <footer>            
         </footer>
-    </div>
+   
 </body>
 </html>

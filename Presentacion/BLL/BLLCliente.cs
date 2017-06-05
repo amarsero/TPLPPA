@@ -22,8 +22,8 @@ namespace BLL
 
             DAL.DAOCliente dao = new DAL.DAOCliente();
 
-            
-            dao.AgregarCliente(cliente);
+                      
+            dao.AgregarCliente(Mapper.Map(cliente));
         }
     }
 }

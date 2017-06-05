@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="41c08688310e4c9bba8a06428ee393da" Name="Diagram1">
+        <EntityTypeShape EntityType="LPPAModel.Cliente" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="LPPAModel.Empleado" Width="1.5" PointX="0.5" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="LPPAModel.Impresora" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LPPAModel.Tarjeta" Width="1.5" PointX="4.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LPPAModel.Terminal" Width="1.5" PointX="3.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="LPPAModel.HistoricoSolicitudTarjetas" Width="1.5" PointX="9.125" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="LPPAModel.FK_Cliente_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="LPPAModel.FK_Tarjeta_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="LPPAModel.FK_Terminal_Empleado" ManuallyRouted="false" />
+        <AssociationConnector Association="LPPAModel.FK_HistoricoSolicitudTarjetas_Impresora" ManuallyRouted="false" />
+        <AssociationConnector Association="LPPAModel.FK_Terminal_Impresora" ManuallyRouted="false" />
+        <AssociationConnector Association="LPPAModel.FK_HistoricoSolicitudTarjetas_Tarjeta" ManuallyRouted="false" />
+        <AssociationConnector Association="LPPAModel.FK_Tarjeta_Tarjeta" ManuallyRouted="false" />
+        <AssociationConnector Association="LPPAModel.FK_HistoricoSolicitudTarjetas_Terminal" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

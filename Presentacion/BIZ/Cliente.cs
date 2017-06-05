@@ -47,10 +47,18 @@ namespace BIZ {
 
 		}//end EstadosCiviles
 
-		/// <summary>
-		/// end EstadosCiviles
-		/// </summary>
-		public enum SituacionesLaborales : int {
+        public enum Bancos : int
+        {
+        HSBC,
+        SANTANDER,
+        CITI,
+        GALICIA
+        }
+
+        /// <summary>
+        /// end EstadosCiviles
+        /// </summary>
+        public enum SituacionesLaborales : int {
 
 			Empleado,
 			Desempleado
@@ -145,7 +153,14 @@ namespace BIZ {
 			get;
 			set;
 		}
-
-	}//end Cliente
+        [DataMember]
+        public string Email { get; set; }
+        [DataMember]
+        public Bancos Banco
+        {
+            get;
+            set;
+        }
+    }//end Cliente
 
 }//end namespace BIZ
