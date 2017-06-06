@@ -9,18 +9,19 @@ angular.module('app').controller("SolicitudTarjetaExtensionController", ["$scope
 
     $scope.mostrarDatosConyuge = function () {
         SolicitudTarjetaExtensionService.ObtenerClientePorDNI($scope.dniTitular).then(function (response) {
-
-            if (response.data.Nombre != null) {
-                $scope.dniTitular = response.data.NroDocumento;
-                $scope.nombreTitular = response.data.Nombre;
-                fuckyoumom = response;
-                console.log(response.data);
-                console.log(response.data.NroDocumento);
-                console.log(response.data.Nombre);
-                $scope.TitularObtenido = true;
+            fuckyoumom = response;
+            console.log(response.data);
+            if (response.data[0].Nombre == null)
+                alert("No existe el dni ingresado.");
+            else if (response.data[0].dniConyuge == null) {
+                alert("El cliente " + response.data[0].Nombre + " no tiene un conyuge registrado.");
             }
             else {
-                alert("No existe el dni ingresado.");
+                $scope.dniTitular = response.data[0].NroDocumento;
+                $scope.nombreTitular = response.data[0].Nombre;
+                $scope.nombreConyuge = response.data[1].Nombre;
+                $scope.dniConyuge = response.data[1].NroDocumento;
+                $scope.TitularObtenido = true;
             }
 
         });

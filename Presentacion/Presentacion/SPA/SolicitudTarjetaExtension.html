@@ -1,7 +1,10 @@
 ﻿<div class="container">
     <div class="row">
-        <div class="modal-content">
-            <div class="modal-body">
+        <h4>
+            Asignar extensión de tarjeta
+        </h4>
+        <div class="panel panel-default">
+            <div class="panel panel-body form-horizontal">
                 <div class="col-md-12">
                     <h3>
                         Asignar tarjeta extensión
@@ -18,10 +21,11 @@
                                     DNI del titular
                                 </label>
                                 <input ng-model="dniTitular" type="text" class="form-control" id="dniTitular" />
+
+                                <button ng-click="mostrarDatosConyuge()" class="btn btn-default">
+                                    Aceptar
+                                </button>
                             </div>
-                            <button ng-click="mostrarDatosConyuge()" class="btn btn-default">
-                                Aceptar
-                            </button>
                         </form>
                     </div>
                     <div ng-show="TitularObtenido">
