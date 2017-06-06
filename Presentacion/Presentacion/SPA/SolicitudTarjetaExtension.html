@@ -12,7 +12,7 @@
                             <img height="25" width="25" src="../Images/loading.gif" />
                         </h3>
                     </div>
-                    <div class="Informacion" ng-show="!Procesando && MostrarInformacion">
+                    <div style="text-align:center;" class="Informacion" ng-show="!Procesando && MostrarInformacion">
 
                         <div class="hero-unit center">
                             <h1 ng-show="!ErrorProceso">
@@ -33,16 +33,15 @@
                         </div>
                         <br />
                     </div>
-                    <div ng-show="!Procesando && !MostrarInformacion && !TitularObtenido">
-                        <h4>
-                            Ingrese el DNI de la cuenta.
-                        </h4>
+                    <div style="text-align:center;" ng-show="!Procesando && !MostrarInformacion && !TitularObtenido">
+                 
                         <form role="form" class="form-inline">
                             <div class="form-group">
 
                                 <label for="nombreTitular">
-                                    DNI del titular
+                                    Ingrese el DNI del titular
                                 </label>
+
                                 <input ng-model="dniTitular" type="text" class="form-control" id="dniTitular" />
 
                                 <button ng-click="mostrarDatosConyuge()" class="btn btn-default">
@@ -51,13 +50,14 @@
                             </div>
                         </form>
                     </div>
-                    <div ng-show="!Procesando && !MostrarInformacion && TitularObtenido">
+                    <div  ng-show="!Procesando && !MostrarInformacion && TitularObtenido">
                         <div class="col-md-6">
-                            <h3>Ingrese datos de la tarjeta</h3>
+                            
                             <form role="form">
-                                <div class="form-group">
+                                <h3>Ingrese datos de la tarjeta</h3>
+                                <div style="text-align:center;" class="form-group">
                                     <label for="Monto" class="col-sm-3 control-label">Monto</label>
-                                    <div class="col-sm-9">
+                                    <div style="text-align:center;" class="col-sm-9">
                                         <input type="number" ng-model="monto" class="form-control" id="monto" />
                                     </div>
                                 </div>
@@ -71,18 +71,21 @@
                                             <option value="3">Master Card</option>
                                         </select>
                                     </div>
+                                    <button type="submit" ng-click="CrearTarjeta()" class="btn btn-default">
+                                        Crear Tarjeta
+                                    </button>
                                 </div>
 
-                                <button type="submit" ng-click="CrearTarjeta()" class="btn btn-default">
-                                    Crear Tarjeta
-                                </button>
+                             
                             </form>
                         </div>
                         <div class="col-md-6">
-
-                            <h3>
-                                {{nombreTitular}}<img style="padding-left: 15px; padding-right:15px" src="http://lorempixel.com/140/140/" class="img-circle" />
-                            </h3>
+                            <div style="text-align:center">
+                                <img style="padding-left: 15px; padding-right:15px" src="http://lorempixel.com/140/140/" class="img-circle" />
+                                <h3>
+                                    {{nombreTitular}}
+                                </h3>
+                            </div>
                             <h4>
                                 {{nombreTitular}} tiene de conyuge a {{nombreConyuge}} con el DNI {{dniConyuge}}.
                             </h4>

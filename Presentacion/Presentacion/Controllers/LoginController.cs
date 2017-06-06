@@ -39,6 +39,7 @@ namespace Presentacion.Controllers
                 BIZ.Empleado Empelado = new BIZ.Empleado();
                 BLL.BLLLogin Login = new BLL.BLLLogin();
                 Empelado = Login.IniciarSesion(usuario,password);
+                System.Web.HttpContext.Current.Session["usuarioIniciado"] = Empelado;
                 return Newtonsoft.Json.JsonConvert.SerializeObject(Empelado);
             }
             catch(Exception ex)
