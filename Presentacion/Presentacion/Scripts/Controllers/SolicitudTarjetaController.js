@@ -7,7 +7,7 @@
 
 
     $scope.verificarEstadoCivil = function () {
-        if ($scope.estadoSeleccionado == "2") {
+        if ($scope.conyuge == "true") {
             $scope.datosConyuge = true;
         } else {
             $scope.datosConyuge = false;
@@ -24,15 +24,22 @@
         cliente.FechaNacimiento = $scope.FechaNacimiento;
         cliente.IngresoMensualAprox = $scope.Ganancia;
         cliente.Nombre = $scope.nombreTitular + ' ' + $scope.apellidoTitular;
-        cliente.DNI = $scope.dniTitular;
+        cliente.DNI = $scope.DNI;
         cliente.Sexo = $scope.Sexo;
         cliente.SituacionLaboral = $scope.Situacion;
         cliente.TipoDocumento = 0;
         cliente.Banco = $scope.Banco;
+        cliente.dniTitular = $scope.dniTitular;
 
+if($scope.conyuge == "true" && $scope.dniTitular == undefined){
+$scope.Procesando = false;
+     $scope.MostrarInformacion = true;
+     $scope.Informacion = "Debe Ingresar un DNI titular si el cliente es Conyuge.";
+     $scope.ErrorProceso = true;
+}
 
 if($scope.CUIT == undefined || $scope.Domicilio == undefined || $scope.FechaNacimiento == undefined || $scope.Ganancia == undefined ||
- $scope.nombreTitular == undefined || $scope.apellidoTitular == undefined || $scope.dniTitular == undefined
+ $scope.nombreTitular == undefined || $scope.apellidoTitular == undefined || $scope.DNI == undefined
 || cliente.EstadoCivil == null || cliente.Sexo == null || cliente.SituacionLaboral == null || cliente.Banco == null){
      $scope.Procesando = false;
      $scope.MostrarInformacion = true;
@@ -44,7 +51,7 @@ if($scope.CUIT == undefined || $scope.Domicilio == undefined || $scope.FechaNaci
         $scope.Tarea = "Procesando informacion";
 
                 SolicitudTarjetaService.CrearCliente(cliente.CUIT, cliente.DniConyuge, cliente.Domicilio, cliente.EstadoCivil, cliente.FechaNacimiento,
-            cliente.IngresoMensualAprox, cliente.Nombre, cliente.DNI, cliente.Sexo, cliente.SituacionLaboral, cliente.TipoDocumento, cliente.Banco).then(
+            cliente.IngresoMensualAprox, cliente.Nombre, cliente.DNI, cliente.Sexo, cliente.SituacionLaboral, cliente.TipoDocumento, cliente.Banco,  cliente.dniTitular).then(
             function (d) {
                 $scope.Procesando = false;
                 $scope.MostrarInformacion = true;

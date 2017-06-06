@@ -17,7 +17,7 @@ namespace Presentacion.Controllers
 
         [HttpPost]
         public void CrearCliente(int? CUIT, int? DniConyuge, string Domicilio, int? EstadoCivil, DateTime FechaNacimiento,
-        int? IngresoMensualAprox, string Nombre, int? DNI, int? Sexo, int? SituacionLaboral, int? TipoDocumento, int? Banco)
+        int? IngresoMensualAprox, string Nombre, int? DNI, int? Sexo, int? SituacionLaboral, int? TipoDocumento, int? Banco, int? dniTitular)
         {
             try
             {
@@ -26,7 +26,15 @@ namespace Presentacion.Controllers
                 BIZ.Cliente Cliente = new BIZ.Cliente();
                 ClienteMapper(CUIT, DniConyuge, Domicilio, EstadoCivil, DNI, FechaNacimiento, IngresoMensualAprox, Nombre, Sexo, SituacionLaboral, Banco, Cliente);
 
-                bll.CrearCliente(Cliente);
+                if(dniTitular == null)
+                {
+                    bll.CrearClienteTitular(Cliente);
+                }
+                else
+                {
+                    bll.CrearClienteConyuge(Cliente, dniTitular);
+                }
+               
             }
             catch (Exception ex)
             {

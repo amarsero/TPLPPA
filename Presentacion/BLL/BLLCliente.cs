@@ -17,13 +17,23 @@ namespace BLL
 
             //return ClienteMapper.Map(dao.ObtenerPorDNI(dni));
         }
-        public void CrearCliente(Cliente cliente)
+        public void CrearClienteTitular(Cliente cliente)
         {
 
             DAL.DAOCliente dao = new DAL.DAOCliente();
 
                       
             dao.AgregarCliente(Mapper.Map(cliente));
+        }
+
+        public void CrearClienteConyuge(Cliente cliente, int? dniTitular)
+        {
+            DAL.DAOCliente dao = new DAL.DAOCliente();
+
+
+            dao.AgregarCliente(Mapper.Map(cliente));
+
+            dao.ActualizarConyugeCliente(dniTitular,cliente.NroDocumento);
         }
     }
 }

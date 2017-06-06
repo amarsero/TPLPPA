@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
-
+using System.Data.Entity;
 
 namespace DAL
 {
@@ -42,6 +42,23 @@ namespace DAL
             }
             
 
+        }
+
+        public void ActualizarConyugeCliente(int? dniTitular, int nroDocumento)
+        {
+            Cliente cliente = new Cliente();
+
+            cliente = _db.Cliente.Where(c => c.DNI == dniTitular).FirstOrDefault();
+
+            if(cliente != null)
+            {
+                cliente.DniConyuge = nroDocumento;
+                _db.Entry(cliente).State = EntityState.Modified;
+                _db.SaveChanges();
+            }else
+            {
+                throw new Exception("No se pudo encontrar el cliente");
+            }
         }
 
         public Cliente ObtenerPorDNI(int dni)

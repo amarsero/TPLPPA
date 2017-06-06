@@ -6,6 +6,19 @@
         margin-bottom: auto;
         margin-top: auto;
     }
+
+    #container {
+        margin: 0px auto;
+        width: 500px;
+        height: 375px;
+        border: 10px #333 solid;
+    }
+
+    #videoElement {
+        width: 500px;
+        height: 375px;
+        background-color: #666;
+    }
 </style>
 
 
@@ -18,305 +31,261 @@
 
         <div class="col-md-12">
 
-                
-                <h4>Registrar nuevo cliente:</h4>
-                <div class="panel panel-default">
 
-                    <div style="text-align:center;" ng-show="Procesando">
-                        <h3>
-                            <span>{{Tarea}}</span>
-                            <img height="25" width="25" src="../Images/loading.gif" />
-                        </h3>
-                    </div>
+            <h4>Registrar nuevo cliente:</h4>
+            <div class="panel panel-default">
 
-                    <div ng-show="!Procesando">
+                <div style="text-align:center;" ng-show="Procesando">
+                    <h3>
+                        <span>{{Tarea}}</span>
+                        <img height="25" width="25" src="../Images/loading.gif" />
+                    </h3>
+                </div>
 
-                        <div class="Informacion" ng-show="!Procesando && MostrarInformacion">
+                <div ng-show="!Procesando">
 
-                            <div class="hero-unit center">
-                                <h1 ng-show="!ErrorProceso">
-                                    Proceso finalizado<span>
-                                        <img height="25" width="25" src="../Images/ok.png" />
-                                    </span>
-                                </h1>
-                                <h1 ng-show="ErrorProceso">
-                                    Proceso erroneo<span>
-                                        <img height="50" width="50" src="../Images/error.png" />
-                                    </span>
-                                </h1>
-                                <br />
-                                <p>Informacion del proceso:</p>
-                                <p><b>{{Informacion}}</b></p>
-                                <a ng-show="!ErrorProceso" href="#!/solicitudtarjeta" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-camera"></span> Tomar foto del cliente </a>
-                                <a href="#!/solicitudtarjeta" ng-click="MostrarInformacion = false" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-arrow-right"></span> Volver </a>
-                            </div>
+                    <div class="Informacion" ng-show="!Procesando && MostrarInformacion && !TomarFoto">
+
+                        <div class="hero-unit center">
+                            <h1 ng-show="!ErrorProceso">
+                                Proceso finalizado<span>
+                                    <img height="25" width="25" src="../Images/ok.png" />
+                                </span>
+                            </h1>
+                            <h1 ng-show="ErrorProceso">
+                                Proceso erroneo<span>
+                                    <img height="50" width="50" src="../Images/error.png" />
+                                </span>
+                            </h1>
                             <br />
+                            <p>Informacion del proceso:</p>
+                            <p><b>{{Informacion}}</b></p>
+                            <a ng-show="!ErrorProceso" ng-click="TomarFoto = true" href="#!/solicitudtarjeta" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-camera"></span> Tomar foto del cliente </a>
+                            <a href="#!/solicitudtarjeta" ng-click="MostrarInformacion = false" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-arrow-right"></span> Volver </a>
                         </div>
-                        <div class="panel-body form-horizontal payment-form " ng-show="!Procesando && !MostrarInformacion">
+                        <br />
+                    </div>
+
+                    <div id="foto" class="Informacion" ng-show="!Procesando && MostrarInformacion && TomarFoto">
+
+                        <div class="hero-unit center">
+                            <h1 ng-show="!ErrorProceso">
+                                Posicione al cliente sobre la webcam de la terminal
+                                <span>
+                                    <img height="25" width="25" src="../Images/ok.png" />
+                                </span>
+                            </h1>
+                            <video id="video"></video>
+
+                            <br />
+                            <canvas id="canvas"></canvas>
+
+                            <br />
+                            <a href="#!/solicitudtarjeta" id="startbutton" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-camera"></span> Capturar </a>
+                            <br />
+                            <a href="#!/solicitudtarjeta" ng-click="MostrarInformacion = false" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-arrow-right"></span> Volver </a>
+                        </div>
+                        <br />
+                    </div>
+
+                    <div class="panel-body form-horizontal payment-form " ng-show="!Procesando && !MostrarInformacion">
 
 
-                            <div class="form-group">
-                                <label for="concept" class="col-sm-3 control-label">Email</label>
-                                <div class="col-sm-9">
-                                    <input class="form-control" placeholder="email@example.com" name="emailSignUp" ng-model="Email" id="emailSignUp" type="email" required>
-                                </div>
+                        <div class="form-group">
+                            <label for="concept" class="col-sm-3 control-label">Email</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" placeholder="email@example.com" name="emailSignUp" ng-model="Email" id="emailSignUp" type="email" required>
                             </div>
-                            <div class="form-group">
-                                <label for="description" class="col-sm-3 control-label">Apellido</label>
-                                <div class="col-sm-9">
-                                    <input class="form-control" placeholder="Apellido cliente" ng-model="apellidoTitular" name="nombre" id="nombre" type="text" required>
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="description" class="col-sm-3 control-label">Apellido</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" placeholder="Apellido cliente" ng-model="apellidoTitular" name="nombre" id="nombre" type="text" required>
                             </div>
-                            <div class="form-group">
-                                <label for="amount" class="col-sm-3 control-label">Nombre</label>
-                                <div class="col-sm-9">
-                                    <input class="form-control" placeholder="Nombre cliente" ng-model="nombreTitular" name="apellido" id="apellido" type="text" required>
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount" class="col-sm-3 control-label">Nombre</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" placeholder="Nombre cliente" ng-model="nombreTitular" name="apellido" id="apellido" type="text" required>
                             </div>
-                            <div class="form-group">
-                                <label for="amount" class="col-sm-3 control-label">Telefono</label>
-                                <div class="col-sm-9">
-                                    <input class="form-control" placeholder="Telefono cliente" name="Telefono" id="Telefono" ng-model="Telefono" type="number">
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount" class="col-sm-3 control-label">Telefono</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" placeholder="Telefono cliente" name="Telefono" id="Telefono" ng-model="Telefono" type="number">
                             </div>
-                            <div class="form-group">
-                                <label for="amount" class="col-sm-3 control-label">DNI</label>
-                                <div class="col-sm-9">
-                                    <input class="form-control" placeholder="DNI cliente" ng-model="dniTitular" name="dni" id="dni" type="number">
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount" class="col-sm-3 control-label">DNI</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" placeholder="DNI cliente" ng-model="DNI" name="dni" id="dni" type="number">
                             </div>
-                            <div class="form-group">
-                                <label for="amount" class="col-sm-3 control-label">CUIT</label>
-                                <div class="col-sm-9">
-                                    <input class="form-control" placeholder="CUIT cliente" ng-model="CUIT" name="cuit" id="cuit" type="number">
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount" class="col-sm-3 control-label">CUIT</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" placeholder="CUIT cliente" ng-model="CUIT" name="cuit" id="cuit" type="number">
                             </div>
+                        </div>
 
-                            <div class="form-group">
-                                <label for="status" class="col-sm-3 control-label">Sexo</label>
-                                <div class="col-sm-9">
-                                    <select ng-model="Sexo" class="form-control" id="status" name="Sexo">
-                                        <option value="0">Femenino</option>
-                                        <option value="1">Masculino</option>
-                                    </select>
-                                </div>
+                        <div class="form-group">
+                            <label for="status" class="col-sm-3 control-label">Sexo</label>
+                            <div class="col-sm-9">
+                                <select ng-model="Sexo" class="form-control" id="status" name="Sexo">
+                                    <option value="0">Femenino</option>
+                                    <option value="1">Masculino</option>
+                                </select>
                             </div>
+                        </div>
 
-                            <div class="form-group">
-                                <label for="status" class="col-sm-3 control-label">Estado Civil</label>
-                                <div class="col-sm-9">
-                                    <select ng-model="estadoSeleccionado" ng-change="verificarEstadoCivil()" class="form-control" id="status" name="EstadoCivil">
-                                        <option value="0">Soltero</option>
-                                        <option value="1">Casado</option>
-                                        <option value="2">Divorciado</option>
-                                        <option value="3">Viudo</option>
-                                    </select>
-                                </div>
+                        <div class="form-group">
+                            <label for="status" class="col-sm-3 control-label">Estado Civil</label>
+                            <div class="col-sm-9">
+                                <select ng-model="estadoSeleccionado" ng-change="verificarEstadoCivil()" class="form-control" id="status" name="EstadoCivil">
+                                    <option value="0">Soltero</option>
+                                    <option value="1">Casado</option>
+                                    <option value="2">Divorciado</option>
+                                    <option value="3">Viudo</option>
+                                </select>
                             </div>
+                        </div>
 
-                            <div class="form-group">
-                                <label for="amount" class="col-sm-3 control-label">Domicilio</label>
-                                <div class="col-sm-9">
-                                    <input ng-model="Domicilio" class="form-control" placeholder="Direccion" name="Direccion" id="Direccion" type="text">
-                                </div>
+                        <div class="form-group">
+                            <label for="amount" class="col-sm-3 control-label">Domicilio</label>
+                            <div class="col-sm-9">
+                                <input ng-model="Domicilio" class="form-control" placeholder="Direccion" name="Direccion" id="Direccion" type="text">
                             </div>
+                        </div>
 
-                            <div class="form-group">
-                                <label for="status" class="col-sm-3 control-label">Estado Civil</label>
-                                <div class="col-sm-9">
-                                    <select ng-model="Situacion" class="form-control" id="status" name="EstadoCivil">
-                                        <option value="0">Empleado</option>
-                                        <option value="1">Desempleado</option>
-                                        <option value="2">Estudiante</option>
-                                    </select>
-                                </div>
+                        <div class="form-group">
+                            <label for="status" class="col-sm-3 control-label">Estado Civil</label>
+                            <div class="col-sm-9">
+                                <select ng-model="Situacion" class="form-control" id="status" name="EstadoCivil">
+                                    <option value="0">Empleado</option>
+                                    <option value="1">Desempleado</option>
+                                    <option value="2">Estudiante</option>
+                                </select>
                             </div>
+                        </div>
 
-                            <div class="form-group">
-                                <label for="amount" class="col-sm-3 control-label">Ingresos mensuales aprox.</label>
-                                <div class="col-sm-9">
-                                    <input ng-model="Ganancia" class="form-control" placeholder="Ganancia mensual aproximada" name="ganancia" id="ganancia" type="text">
-                                </div>
+                        <div class="form-group">
+                            <label for="amount" class="col-sm-3 control-label">Ingresos mensuales aprox.</label>
+                            <div class="col-sm-9">
+                                <input ng-model="Ganancia" class="form-control" placeholder="Ganancia mensual aproximada" name="ganancia" id="ganancia" type="text">
                             </div>
+                        </div>
 
-                            <div class="form-group">
-                                <label for="status" class="col-sm-3 control-label">Banco</label>
-                                <div class="col-sm-9">
-                                    <select ng-model="Banco" class="form-control" id="status" name="EstadoCivil">
-                                        <option value="0">HSBC</option>
-                                        <option value="1">Santander Rio</option>
-                                        <option value="2">CITI</option>
-                                        <option value="3">Galicia</option>
-                                    </select>
-                                </div>
+                        <div class="form-group">
+                            <label for="status" class="col-sm-3 control-label">Banco</label>
+                            <div class="col-sm-9">
+                                <select ng-model="Banco" class="form-control" id="status" name="EstadoCivil">
+                                    <option value="0">HSBC</option>
+                                    <option value="1">Santander Rio</option>
+                                    <option value="2">CITI</option>
+                                    <option value="3">Galicia</option>
+                                </select>
                             </div>
+                        </div>
 
+                        <div class="form-group">
+                            <label for="date" class="col-sm-3 control-label">Fecha de nacimiento</label>
+                            <div class="col-sm-9">
+                                <input ng-model="FechaNacimiento" class="form-control" placeholder="Fecha de nacimiento" name="fechanac" id="fechanac" type="date">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="status" class="col-sm-3 control-label">Tipo Cliente</label>
+                            <div class="col-sm-9">
+
+                                <input ng-click="verificarEstadoCivil()" ng-model="conyuge" value="false" class="radio-inline" type="radio" name="tipo" value="titular"> Titular<br>
+                                <input ng-click="verificarEstadoCivil()" ng-model="conyuge" value="true" class="radio-inline" type="radio" name="tipo" value="conyuge"> Conyuge<br>
+
+                            </div>
+                        </div>
+                        <div ng-show="datosConyuge">
                             <div class="form-group">
-                                <label for="date" class="col-sm-3 control-label">Fecha de nacimiento</label>
+                                <label for="status" class="col-sm-3 control-label">Dni Titular</label>
                                 <div class="col-sm-9">
-                                    <input ng-model="FechaNacimiento" class="form-control" placeholder="Fecha de nacimiento" name="fechanac" id="fechanac" type="date">
+                                    <input ng-model="dniTitular" class="form-control" placeholder="Dni Titular" name="DniTitular" id="DniTitular" type="number">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="col-sm-12 text-right">
-                                    <button ng-click="ProcesarSolicitud()" type="submit" class="btn btn-default preview-add-button">
-                                        <span class="glyphicon glyphicon-plus"></span> Registrar
-                                    </button>
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12 text-right">
+                                <button ng-click="ProcesarSolicitud()" type="submit" class="btn btn-default preview-add-button">
+                                    <span class="glyphicon glyphicon-plus"></span> Registrar
+                                </button>
                             </div>
                         </div>
                     </div>
-                <!--<form ng-show="!MostrarInformacion" novalidate="novalidate" id="formSignUp">
+                </div>
 
-                    <span class="glyphicon glyphicon-log-in"></span>
-                    <input class="form-control" placeholder="email@example.com" name="emailSignUp" ng-model="Email" id="emailSignUp" type="email" required>
-                    <span class="glyphicon glyphicon-user"></span>
-                    <input class="form-control" placeholder="Apellido cliente" ng-model="apellidoTitular" name="nombre" id="nombre" type="text" required>
-                    <span class="glyphicon glyphicon-user"></span>
-                    <input class="form-control" placeholder="Nombre cliente" ng-model="nombreTitular" name="apellido" id="apellido" type="text" required>
-
-                    <span class="glyphicon glyphicon-phone"></span>
-                    <input class="form-control" placeholder="Telefono cliente" name="Telefono" id="Telefono" ng-model="Telefono" type="number">
-                    <span class="glyphicon glyphicon-user"></span>
-                    <input class="form-control" placeholder="DNI cliente" ng-model="dniTitular" name="dni" id="dni" type="number">
-                    <span class="glyphicon glyphicon-user"></span>
-                    <input class="form-control" placeholder="CUIT cliente" ng-model="CUIT" name="cuit" id="cuit" type="number">
-
-
-                    <span class="glyphicon glyphicon-user"></span>
-                    <select ng-model="Sexo" name="generos" class="form-control" title="Genero">
-                        <option selected="selected" disabled="disabled" value="femenino">Sexo</option>
-                        <option value="0">Femenino</option>
-                        <option value="1">Masculino</option>
-                    </select>
-
-                    <span class="glyphicon glyphicon-info-sign"></span>
-
-                    <select ng-model="estadoSeleccionado" ng-change="verificarEstadoCivil()" class="form-control">
-                        <option selected="selected" disabled="disabled" value="estado">Estado civil</option>
-                        <option value="0">Soltero</option>
-                        <option value="1">Casado</option>
-                        <option value="2">Divorciado</option>
-                        <option value="3">Divorciado</option>
-                    </select>
-
-                    <span class="glyphicon glyphicon-info-sign"></span>
-                    <input ng-model="Domicilio" class="form-control" placeholder="Direccion" name="Direccion" id="Direccion" type="text">
-
-
-
-
-                    <span class="glyphicon glyphicon-user"></span>
-
-                    <select ng-model="Situacion" name="situacion" class="form-control" title="Situacion Laboral">
-                        <option selected="selected" disabled="disabled" value="situacion">Situacion laboral</option>
-                        <option value="0">Empleado</option>
-                        <option value="1">Desempleado</option>
-                    </select>
-
-                    <span class="glyphicon glyphicon-info-sign"></span>
-                    <input ng-model="Ganancia" class="form-control" placeholder="Ganancia mensual aproximada" name="ganancia" id="ganancia" type="text">
-
-                    <span class="glyphicon glyphicon-info-sign"></span>
-
-                    <select ng-model="Banco" name="situacion" class="form-control" title="Banco actual">
-                        <option selected="selected" disabled="disabled" value="banco">Banco</option>
-                        <option value="0">HSBC</option>
-                        <option value="1">Santander Rio</option>
-                        <option value="2">CITI</option>
-                        <option value="3">Galicia</option>
-                    </select>
-
-
-
-                    <span>Fecha de nacimiento</span>
-                    <input ng-model="FechaNacimiento" class="form-control" placeholder="Fecha de nacimiento" name="fechanac" id="fechanac" type="date">
-
-
-                    <div ng-show="datosConyuge">
-                        <h4>Datos del conyuge</h4>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-log-in"></span>
-                                    <input class="form-control" placeholder="email@example.com" name="emailSignUp" id="emailSignUp" type="email">
-                                    <span class="glyphicon glyphicon-user"></span>
-                                    <input class="form-control" placeholder="Apellido cliente" name="nombre" id="nombre" type="text">
-                                    <span class="glyphicon glyphicon-user"></span>
-                                    <input class="form-control" placeholder="Nombre cliente" name="apellido" id="apellido" type="text">
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-phone"></span>
-                                    <input class="form-control" placeholder="Telefono cliente" name="Telefono" id="Telefono" type="number">
-                                    <span class="glyphicon glyphicon-user"></span>
-                                    <input class="form-control" placeholder="DNI cliente" name="dni" id="dni" type="number">
-                                    <span class="glyphicon glyphicon-user"></span>
-                                    <input class="form-control" placeholder="CUIT cliente" name="cuit" id="cuit" type="number">
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-user"></span>
-
-                                    <select name="generos" class="form-control" title="Genero"
-                                        <option value="femenino">Sexo</option>
-                                        <option selected="selected" disabled="disabled" value="femenino">Sexo</option>
-                                        <option value="femenino">Femenino</option>
-                                        <option value="masculino">Masculino</option>
-                                    </select>
-                                    <span class="glyphicon glyphicon-user"></span>
-                                    <select class="form-control" disabled="disabled">
-                                        <option selected="selected" disabled="disabled" value="estado">Casado</option>
-                                    </select>
-                                    <span class="glyphicon glyphicon-info-sign"></span>
-                                    <input class="form-control" placeholder="Direccion" name="Direccion" id="Direccion" type="text">
-
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-user"></span>
-
-                                    <select name="situacion" class="form-control" title="Situacion Laboral">
-                                        <option selected="selected" disabled="disabled" value="situacion">Situacion laboral</option>
-                                        <option value="femenino">Empleado</option>
-                                        <option value="masculino">Desempleado</option>
-                                        <option value="masculino">Estudiante</option>
-                                    </select>
-
-                                    <span class="glyphicon glyphicon-info-sign"></span>
-                                    <input required class="form-control" placeholder="Ganancia mensual aproximada" name="ganancia" id="ganancia" type="text">
-
-                                    <span class="glyphicon glyphicon-info-sign"></span>
-
-                                    <select required name="situacion" class="form-control" title="Banco actual">
-                                        <option selected="selected" disabled="disabled" value="banco">Banco</option>
-                                        <option value="femenino">HSBC</option>
-                                        <option value="masculino">Santander Rio</option>
-                                        <option value="masculino">CITI</option>
-                                        <option value="masculino">Galicia</option>
-                                    </select>
-
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <button ng-click="ProcesarSolicitud()" type="submit" class="btn btn-primary">Registrar</button>
-                </form>-->
 
             </div>
 
         </div>
     </div>
 </div>
+
+
+<script>
+    (function () {
+
+        var streaming = false,
+            video = document.querySelector('#video'),
+            canvas = document.querySelector('#canvas'),
+            photo = document.querySelector('#photo'),
+            startbutton = document.querySelector('#startbutton'),
+            width = 320,
+            height = 0;
+
+        navigator.getMedia = (navigator.getUserMedia ||
+            navigator.webkitGetUserMedia ||
+            navigator.mozGetUserMedia ||
+            navigator.msGetUserMedia);
+
+        navigator.getMedia(
+            {
+                video: true,
+                audio: false
+            },
+            function (stream) {
+                if (navigator.mozGetUserMedia) {
+                    video.mozSrcObject = stream;
+                } else {
+                    var vendorURL = window.URL || window.webkitURL;
+                    video.src = vendorURL.createObjectURL(stream);
+                }
+                video.play();
+            },
+            function (err) {
+                console.log("An error occured! " + err);
+            }
+        );
+
+        video.addEventListener('canplay', function (ev) {
+            if (!streaming) {
+                height = video.videoHeight / (video.videoWidth / width);
+                video.setAttribute('width', width);
+                video.setAttribute('height', height);
+                canvas.setAttribute('width', width);
+                canvas.setAttribute('height', height);
+                streaming = true;
+            }
+        }, false);
+
+        function takepicture() {
+            canvas.width = width;
+            canvas.height = height;
+            canvas.getContext('2d').drawImage(video, 0, 0, width, height);
+            var data = canvas.toDataURL('image/png');
+            photo.setAttribute('src', data);
+        }
+
+        startbutton.addEventListener('click', function (ev) {
+            takepicture();
+            ev.preventDefault();
+        }, false);
+
+    })();
+</script>
