@@ -1,19 +1,42 @@
 ﻿<div class="container">
     <div class="row">
         <h4>
-            Asignar extensión de tarjeta
+            Asignar tarjeta
         </h4>
         <div class="panel panel-default">
             <div class="panel panel-body form-horizontal">
                 <div class="col-md-12">
-                    <h3>
-                        Asignar tarjeta extensión
-                    </h3>
-                    <br />
-                    <div ng-show="!TitularObtenido">
-                        <p class="lead">
-                            Ingrese el DNI del titular de la cuenta.
-                        </p>
+                    <div style="text-align:center;" ng-show="Procesando">
+                        <h3>
+                            <span>{{Tarea}}</span>
+                            <img height="25" width="25" src="../Images/loading.gif" />
+                        </h3>
+                    </div>
+                    <div class="Informacion" ng-show="!Procesando && MostrarInformacion">
+
+                        <div class="hero-unit center">
+                            <h1 ng-show="!ErrorProceso">
+                                Proceso finalizado<span>
+                                    <img height="25" width="25" src="../Images/ok.png" />
+                                </span>
+                            </h1>
+                            <h1 ng-show="ErrorProceso">
+                                Proceso erroneo<span>
+                                    <img height="50" width="50" src="../Images/error.png" />
+                                </span>
+                            </h1>
+                            <br />
+                            <p>Informacion del proceso:</p>
+                            <p><b>{{Informacion}}</b></p>
+                            <a ng-show="!ErrorProceso" href="#!/solicitudtarjetaextension" class="btn btn-default btn-lg">
+                            <a href="#!/solicitudtarjetaextension" ng-click="MostrarInformacion = false" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-arrow-right"></span> Volver </a>
+                        </div>
+                        <br />
+                    </div>
+                    <div ng-show="!Procesando && !MostrarInformacion && !TitularObtenido">
+                        <h4>
+                            Ingrese el DNI de la cuenta.
+                        </h4>
                         <form role="form" class="form-inline">
                             <div class="form-group">
 
@@ -28,26 +51,57 @@
                             </div>
                         </form>
                     </div>
-                    <div ng-show="TitularObtenido">
-                        <p>
-                            {{nombreTitular}} con DNI {{dniTitular}} tiene de conyuge a {{nombreConyuge}} con el DNI {{dniConyuge}}.
-                        </p>
-                        <p class="lead">
-                            Ingrese el monto máximo para la extensión.
-                        </p>
-                        <form role="form">
-                            <div class="form-group">
+                    <div ng-show="!Procesando && !MostrarInformacion && TitularObtenido">
+                        <div class="col-md-6">
+                            <h3>Ingrese datos de la tarjeta</h3>
+                            <form role="form">
+                                <div class="form-group">
+                                    <label for="Monto" class="col-sm-3 control-label">Monto</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" ng-model="monto" class="form-control" id="monto" />
+                                    </div>
+                                </div>
 
-                                <label for="montoExtension">
-                                    Monto
-                                </label>
-                                <input type="number" class="form-control" id="montoExtension" />
+                                <div class="form-group">
+                                    <label for="Marca" class="col-sm-3 control-label">Marca</label>
+                                    <div class="col-sm-9">
+                                        <select ng-model="estadoSeleccionado" class="form-control" id="status" name="Marca">
+                                            <option value="1">Visa</option>
+                                            <option value="2">American Express</option>
+                                            <option value="3">Master Card</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <button type="submit" ng-click="CrearTarjeta()" class="btn btn-default">
+                                    Crear Tarjeta
+                                </button>
+                            </form>
+                        </div>
+                        <div class="col-md-6">
+
+                            <h3>
+                                {{nombreTitular}}<img style="padding-left: 15px; padding-right:15px" src="http://lorempixel.com/140/140/" class="img-circle" />
+                            </h3>
+                            <h4>
+                                {{nombreTitular}} tiene de conyuge a {{nombreConyuge}} con el DNI {{dniConyuge}}.
+                            </h4>
+                            <div>
+                                <label for="DNI" class="control-label">DNI:   </label>{{cliente.NroDocumento}}
                             </div>
-
-                            <button type="submit" class="btn btn-default">
-                                Crear extensión
-                            </button>
-                        </form>
+                            <div>
+                                <label for="EDAD" class="control-label">Edad:   </label>{{cliente.FechaNac}}
+                            </div>
+                            <div>
+                                <label for="CUIT" class="control-label">Cuit:   </label>{{cliente.Cuit}}
+                            </div>
+                            <div>
+                                <label for="Domicilio" class="control-label">Domicilio:   </label>{{cliente.Domicilio}}
+                            </div>
+                            <div>
+                                <label for="Email" class="control-label">Email:   </label>{{cliente.Email}}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

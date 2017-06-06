@@ -13,6 +13,16 @@
         return $q.when(promise);
 
     };
+    service.NuevaTarjeta = function (tarjeta) {
+        var promise = $http({
+            method: 'post',
+            url: '/SolicitudTarjetaExtension/NuevaTarjeta',
+            data: { tarjeta: tarjeta }
+        });
+
+        return $q.when(promise);
+
+    }; 
 
     return service;
 });

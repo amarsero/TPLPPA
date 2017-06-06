@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BIZ;
 
 namespace Presentacion.Controllers
 {
@@ -23,6 +24,18 @@ namespace Presentacion.Controllers
             cliente[1] = bll.ObtenerClientePorDNI((int)cliente[0].DniConyugue);
 
             return Newtonsoft.Json.JsonConvert.SerializeObject(cliente);
+        }
+
+
+        [HttpPost]
+        public void NuevaTarjeta(object tarjeta)
+        {
+            Tarjeta tar = Newtonsoft.Json.JsonConvert.DeserializeObject<Tarjeta>(tarjeta.ToString());
+
+            BLL.BLLTarjeta bll = new BLL.BLLTarjeta();
+
+            bll.CrearTarjeta(tar);
+
         }
 	}
 }

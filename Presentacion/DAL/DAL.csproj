@@ -55,6 +55,7 @@
     <Compile Include="Conexion.cs" />
     <Compile Include="DAOCliente.cs" />
     <Compile Include="DAOLogin.cs" />
+    <Compile Include="DAOTarjeta.cs" />
     <Compile Include="DB_LPPA.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
