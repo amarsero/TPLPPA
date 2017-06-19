@@ -16,6 +16,16 @@
         return $q.when(promise);
 
     };
+    service.SubirFoto = function (foto, path) {
+        var promise = $http({
+            method: 'POST',
+            url: '/SolicitudTarjeta/SubirImagen',
+            data: '{ "foto" : "' + foto.substring(22) + '" , "path" :  "' + path + '"  }'
+        });
+
+        return $q.when(promise);
+
+    };
 
     return service;
 });

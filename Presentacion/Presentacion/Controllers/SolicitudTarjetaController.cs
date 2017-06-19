@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Drawing;
+using System.IO;
 
 namespace Presentacion.Controllers
 {
@@ -26,7 +28,7 @@ namespace Presentacion.Controllers
                 BIZ.Cliente Cliente = new BIZ.Cliente();
                 ClienteMapper(CUIT, DniConyuge, Domicilio, EstadoCivil, DNI, FechaNacimiento, IngresoMensualAprox, Nombre, Sexo, SituacionLaboral, Banco, Cliente);
 
-                if(dniTitular == null)
+                if (dniTitular == null)
                 {
                     bll.CrearClienteTitular(Cliente);
                 }
@@ -34,7 +36,7 @@ namespace Presentacion.Controllers
                 {
                     bll.CrearClienteConyuge(Cliente, dniTitular);
                 }
-               
+
             }
             catch (Exception ex)
             {
@@ -43,6 +45,20 @@ namespace Presentacion.Controllers
 
         }
 
+        [HttpPost]
+        public void SubirImagen(string foto, string path)
+        {
+            try
+            {
+                BLL.BLLCliente bll = new BLL.BLLCliente();
+                bll.SubirImagen(foto, path);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
         private static void ClienteMapper(int? CUIT, int? DniConyuge, string Domicilio, int? EstadoCivil, int? DNI, DateTime FechaNacimiento, int? IngresoMensualAprox, string Nombre, int? Sexo, int? SituacionLaboral, int? Banco, BIZ.Cliente Cliente)
         {
             Cliente.Banco = (BIZ.Cliente.Bancos)Banco;

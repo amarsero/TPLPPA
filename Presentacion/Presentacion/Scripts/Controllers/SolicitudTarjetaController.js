@@ -5,6 +5,8 @@
     $scope.estados = [];
     var cliente = {};
 
+    $scope.FotoSacada = false;
+
 
     $scope.verificarEstadoCivil = function () {
         if ($scope.conyuge == "true") {
@@ -13,6 +15,30 @@
             $scope.datosConyuge = false;
         }
     }
+    $scope.GuardarFoto = function()
+    {
+        foto = document.querySelector('#canvas').toDataURL('image/png');
+        SolicitudTarjetaService.SubirFoto(foto, cliente.Nombre+cliente.DNI+".png").then(
+            function (d) {
+                $scope.Procesando = false;
+                $scope.MostrarInformacion = true;
+                $scope.FotoSacada = false;
+                $scope.Informacion = "Proceso finalizado: Foto almacenada correctamente.";
+                $scope.ErrorProceso = false;
+                $scope.TomarFoto = false;
+
+            },
+            function (error) {
+                $scope.ErrorProceso = true;
+                $scope.Procesando = false;
+                $scope.MostrarInformacion = true;
+                $scope.Informacion = "Ocurrio un error al procesar la informacion: " + "Hubo un problema al conectar a la base de datos";
+                $scope.TomarFoto = false;
+
+            }          ) ;
+
+    }
+
   
     $scope.ProcesarSolicitud = function () {
         
