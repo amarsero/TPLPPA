@@ -53,6 +53,7 @@
       <DependentUpon>DB_LPPA.tt</DependentUpon>
     </Compile>
     <Compile Include="Conexion.cs" />
+    <Compile Include="DAOBase.cs" />
     <Compile Include="DAOCliente.cs" />
     <Compile Include="DAOLogin.cs" />
     <Compile Include="DAOTarjeta.cs" />
@@ -100,6 +101,10 @@
     <ProjectReference Include="..\BIZ\BIZ.csproj">
       <Project>{c0bb125b-7c20-4d5e-9752-974ae67a8741}</Project>
       <Name>BIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SL\SL.csproj">
+      <Project>{15373cfe-e14a-4e72-815d-5b76f6d28e51}</Project>
+      <Name>SL</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class DAOTarjeta
+    public class DAOTarjeta : DAOBase
     {
 
         private LPPAEntities _db = new LPPAEntities();
@@ -22,7 +22,9 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al coenctare a la base de datos");
+                ErrorLogger.WriteErrorLog(ex.Message,ex.ToString());
+           
+               
             }
 
 

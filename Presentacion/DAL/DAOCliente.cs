@@ -8,71 +8,67 @@ using System.Data.Entity;
 
 namespace DAL
 {
-    public class DAOCliente
+    public class DAOCliente : DAOBase
     {
         private LPPAEntities _db = new LPPAEntities();
         public void AgregarCliente(DAL.Cliente cliente)
         {
             try
             {
-            //Cliente Insert = new Cliente();
-            //Insert.Nombre = "Gonzalo";
-            //Insert.DNI = 12311312;
-            //    Insert.CUIT = 23321232;
-            //    Insert.Domicilio="Calle falsa";
-            //    Insert.EstadoCivil = 1;
-            //    Insert.FechaNacimiento = DateTime.Now;
-            //    Insert.IngresoMesualAprox = 1231;
-            //    Insert.Sexo = 1;
-            //    Insert.SituacionLaboral = 1;
-            //    Insert.Tarjeta = new List<Tarjeta>();
-            //    Insert.Tarjeta.Add(new Tarjeta());
-            //    Insert.TipoDocumento = 1;
-               
-
-
-
-            _db.Cliente.Add(cliente);
-            _db.SaveChanges();
+                _db.Cliente.Add(cliente);
+                _db.SaveChanges();
+                Logger.Trace("DAL.AgregarCliente() -> se genero u nuevo cliente dni: " + cliente.DNI);
 
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al coenctare a la base de datos");
+                ErrorLogger.WriteErrorLog(ex.Message, ex.ToString());
+                throw;
             }
-            
+
 
         }
 
         public void ActualizarConyugeCliente(int? dniTitular, int nroDocumento)
         {
-            Cliente cliente = new Cliente();
-
-            cliente = _db.Cliente.Where(c => c.DNI == dniTitular).FirstOrDefault();
-
-            if(cliente != null)
+            try
             {
-                cliente.DniConyuge = nroDocumento;
-                _db.Entry(cliente).State = EntityState.Modified;
-                _db.SaveChanges();
-            }else
+                Cliente cliente = new Cliente();
+
+                cliente = _db.Cliente.Where(c => c.DNI == dniTitular).FirstOrDefault();
+
+                if (cliente != null)
+                {
+                    cliente.DniConyuge = nroDocumento;
+                    _db.Entry(cliente).State = EntityState.Modified;
+                    _db.SaveChanges();
+                    Logger.Trace("DAL.ActualizarConyugeCliente() -> se actualizo el conyuge del titular dni: " + dniTitular + " con dniConyuge: " + nroDocumento);
+                }
+                else
+                {
+                    throw new Exception("No se pudo encontrar el cliente");
+                }
+            }
+            catch (Exception ex)
             {
-                throw new Exception("No se pudo encontrar el cliente");
+                ErrorLogger.WriteErrorLog(ex.Message, ex.ToString());
+                throw;
             }
         }
 
         public Cliente ObtenerPorDNI(int dni)
         {
-            
+
             try
             {
-
-                return _db.Cliente.Where(c => c.DNI == dni).FirstOrDefault();
-
+                Cliente cliente = new Cliente();
+                cliente = _db.Cliente.Where(c => c.DNI == dni).FirstOrDefault();
+                Logger.Trace("DAL.ObtenerDNI() -> Se consulto el cliente dni: " + dni);
+                return cliente;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                ErrorLogger.WriteErrorLog(ex.Message, ex.ToString());
                 throw;
             }
 

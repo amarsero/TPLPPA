@@ -6,17 +6,29 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class DAOLogin
+    public class DAOLogin : DAOBase
     {
-        public Empleado IniciarSesion(string usuario,string password)
+        public Empleado IniciarSesion(string usuario, string password)
         {
-            using (LPPAEntities BD = new LPPAEntities())
+            try
             {
                 Empleado Empleado = new Empleado();
-                Empleado = BD.Empleado.Where(a => a.LoginUser.Equals(usuario) && a.Password.Equals(password)).First();
+                using (LPPAEntities BD = new LPPAEntities())
+                {
+
+                    Empleado = BD.Empleado.Where(a => a.LoginUser.Equals(usuario) && a.Password.Equals(password)).First();
+
+
+                }
 
                 return Empleado;
             }
+            catch (Exception ex)
+            {
+                ErrorLogger.WriteErrorLog(ex.Message,ex.ToString());
+                return null;
+            }
+
         }
     }
 }
