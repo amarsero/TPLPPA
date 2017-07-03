@@ -21,7 +21,7 @@ angular.module('app').controller("SolicitudTarjetaExtensionController", ["$scope
                     $scope.ErrorProceso = true;
                     $scope.Informacion = "No existe el dni ingresado.";
                 }
-                else if (response.data[1].Nombre == null){
+                else if (response.data[1] == null){
                     $scope.cliente = response.data[0];
                     $scope.dniTitular = response.data[0].NroDocumento;
                     $scope.nombreTitular = response.data[0].Nombre;
