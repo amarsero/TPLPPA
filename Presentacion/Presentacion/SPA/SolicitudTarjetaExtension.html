@@ -28,7 +28,7 @@
                             <br />
                             <p>Informacion del proceso:</p>
                             <p><b>{{Informacion}}</b></p>
-                            <a ng-show="!ErrorProceso" href="#!/solicitudtarjetaextension" class="btn btn-default btn-lg">
+                            <a ng-show="!ErrorProceso" href="#!/solicitudtarjetaextension" class="btn btn-default btn-lg"></a>
                             <a href="#!/solicitudtarjetaextension" ng-click="MostrarInformacion = false" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-arrow-right"></span> Volver </a>
                         </div>
                         <br />
@@ -81,13 +81,14 @@
                         </div>
                         <div class="col-md-6">
                             <div style="text-align:center">
-                                <img style="padding-left: 15px; padding-right:15px" src="http://lorempixel.com/140/140/" class="img-circle" />
+                                <img ng-src="{{imagenicono == '' ? 'http://lorempixel.com/140/140/' : 'data:image/png;base64, ' +imagenicono}}" style="padding-left: 15px; padding-right:15px" src="data:image/png;base64, imagenicono" class="img-circle" id="imagenpersona" />
+                                    
                                 <h3>
                                     {{nombreTitular}}
                                 </h3>
                             </div>
                             <h4>
-                                {{nombreTitular}} tiene de conyuge a {{nombreConyuge}} con el DNI {{dniConyuge}}.
+                                {{nombreTitular}} {{informacionConyuge}}.
                             </h4>
                             <div>
                                 <label for="DNI" class="control-label">DNI:   </label>{{cliente.NroDocumento}}

@@ -9,7 +9,18 @@
             url: '/SolicitudTarjetaExtension/ObtenerClientePorDNI',
             params: { dni: dni }
         });
+        
 
+        return $q.when(promise);
+
+    };
+    service.ObtenerImagen = function (path) {
+        var promise = $http({
+            method: 'get',
+            url: '/SolicitudTarjetaExtension/ObtenerImagen',
+            params: { path: path }
+        });
+        
         return $q.when(promise);
 
     };

@@ -26,6 +26,11 @@ namespace Presentacion.Controllers
             return Newtonsoft.Json.JsonConvert.SerializeObject(cliente);
         }
 
+        public string ObtenerImagen(string path)
+        {
+            BLL.BLLCliente bll = new BLL.BLLCliente();
+            return bll.ObtenerImagen(path);
+        }
 
         [HttpPost]
         public void NuevaTarjeta(object tarjeta)
@@ -37,5 +42,7 @@ namespace Presentacion.Controllers
             bll.CrearTarjeta(tar);
 
         }
+
+
 	}
 }
