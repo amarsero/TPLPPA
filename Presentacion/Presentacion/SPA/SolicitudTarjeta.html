@@ -81,7 +81,9 @@
                             <canvas id="canvas"></canvas>
 
                             <br />
-                            <a href="#!/solicitudtarjeta" id="startbutton" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-camera"></span> Capturar </a>
+                            <a href="#!/solicitudtarjeta" id="startbutton" ng-click="FotoSacada = true" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-camera"></span> Capturar </a>
+
+                            <a href="#!/solicitudtarjeta" id="savebutton" ng-show="FotoSacada" ng-click="GuardarFoto()" class=" btn btn-default btn-lg"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar </a>
                             <br />
                             <a href="#!/solicitudtarjeta" ng-click="MostrarInformacion = false" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-arrow-right"></span> Volver </a>
                         </div>
@@ -279,7 +281,6 @@
             canvas.height = height;
             canvas.getContext('2d').drawImage(video, 0, 0, width, height);
             var data = canvas.toDataURL('image/png');
-            photo.setAttribute('src', data);
         }
 
         startbutton.addEventListener('click', function (ev) {

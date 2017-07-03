@@ -17,6 +17,18 @@ namespace BLL
 
             //return ClienteMapper.Map(dao.ObtenerPorDNI(dni));
         }
+        public void SubirImagen(string imagen, string path)
+        {
+            byte[] data = Convert.FromBase64String(imagen);
+
+            System.IO.File.WriteAllBytes(AppDomain.CurrentDomain.BaseDirectory + @"/FotosUsuarios/" + path, data);
+        }
+        public string ObtenerImagen(string path)
+        {
+            byte[] data = System.IO.File.ReadAllBytes(AppDomain.CurrentDomain.BaseDirectory + @"/FotosUsuarios/" + path);
+
+            return Convert.ToBase64String(data);
+        }
         public void CrearClienteTitular(Cliente cliente)
         {
 

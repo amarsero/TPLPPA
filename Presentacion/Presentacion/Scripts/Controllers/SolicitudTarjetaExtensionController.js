@@ -14,10 +14,18 @@ angular.module('app').controller("SolicitudTarjetaExtensionController", ["$scope
             SolicitudTarjetaExtensionService.ObtenerClientePorDNI($scope.dniTitular).then(function (response) {
                 $scope.Procesando = false;
                 fuckyoumom = response.data;
+                $scope.informacionConyuge = "";
+
                 if (response.data[0].Nombre == null) {
                     $scope.MostrarInformacion = true;
                     $scope.ErrorProceso = true;
                     $scope.Informacion = "No existe el dni ingresado.";
+                }
+                else if (response.data[1].Nombre == null){
+                    $scope.cliente = response.data[0];
+                    $scope.dniTitular = response.data[0].NroDocumento;
+                    $scope.nombreTitular = response.data[0].Nombre;
+                    $scope.TitularObtenido = true;
                 }
                 else {
                     $scope.cliente = response.data[0];
@@ -26,7 +34,16 @@ angular.module('app').controller("SolicitudTarjetaExtensionController", ["$scope
                     $scope.nombreTitular = response.data[0].Nombre;
                     $scope.nombreConyuge = response.data[1].Nombre;
                     $scope.dniConyuge = response.data[1].NroDocumento;
+                    $scope.informacionConyuge = "tiene de conyuge a " + $scope.nombreConyuge +
+                        "con dni: " + $scope.dniConyuge + " ";
                     $scope.TitularObtenido = true;
+                    SolicitudTarjetaExtensionService.ObtenerImagen($scope.nombreTitular+$scope.dniTitular+".png").then(function (response) {
+                        $scope.imagenicono = response.data;
+                    },
+                function (error) {
+                }
+
+            );
                 }
             },
                 function (error) {

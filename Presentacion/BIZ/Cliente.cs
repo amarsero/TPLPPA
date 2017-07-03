@@ -134,7 +134,7 @@ namespace BIZ {
 		public string RutaImg{
 			get
             {
-                return Nombre + NroDocumento.ToString()+".jpg";
+                return Nombre + NroDocumento.ToString()+".png";
             }
 		    private set{}
 		}
