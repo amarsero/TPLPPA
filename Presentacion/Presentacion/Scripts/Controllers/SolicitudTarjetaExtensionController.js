@@ -26,6 +26,13 @@ angular.module('app').controller("SolicitudTarjetaExtensionController", ["$scope
                     $scope.dniTitular = response.data[0].NroDocumento;
                     $scope.nombreTitular = response.data[0].Nombre;
                     $scope.TitularObtenido = true;
+                    SolicitudTarjetaExtensionService.ObtenerImagen($scope.nombreTitular + $scope.dniTitular + ".png").then(function (response) {
+                        $scope.imagenicono = response.data;
+                    },
+                        function (error) {
+                        }
+
+                    );
                 }
                 else {
                     $scope.cliente = response.data[0];
