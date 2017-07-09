@@ -50,5 +50,10 @@ namespace Presentacion.Controllers
 
 
         }
+
+        public static bool IsUserLog()
+        {
+            return System.Web.HttpContext.Current.Session["usuarioIniciado"] != null;
+        }
     }
 }
