@@ -42,7 +42,7 @@ namespace Presentacion.Controllers
                 System.Web.HttpContext.Current.Session["usuarioIniciado"] = Empelado;
                 return Newtonsoft.Json.JsonConvert.SerializeObject(Empelado);
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 throw new Exception("Usuario o contraseña incorrectos.");
             }

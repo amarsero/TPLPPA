@@ -24,6 +24,12 @@ app.config(function ($routeProvider) {
             controller: 'SolicitudTarjetaExtensionController'
         })
 
+        .when('/reportes',
+        {
+            templateUrl: 'Reportes.html',
+            controller: 'ReportesController'
+        })
+
         .otherwise({
             redirectTo: '/'
         });
