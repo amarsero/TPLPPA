@@ -21,7 +21,6 @@
         $scope.ReporteCantidadDePatosEnAustraliaPorMes = function()
         {
             ReportesService.ReporteCantidadDePatosEnAustraliaPorMes().then(function (response) {
-                console.log(response.data);
                 eval(response.data);
             },
                     function (error) {
@@ -33,7 +32,6 @@
 
         $scope.ReporteTarjetasPorEmpleado = function () {
             ReportesService.ReporteTarjetasPorEmpleado().then(function (response) {
-                console.log(response.data);
                 eval(response.data);
             },
                     function (error) {
@@ -42,7 +40,6 @@
 
                 );
         }
-
 
 
     }])

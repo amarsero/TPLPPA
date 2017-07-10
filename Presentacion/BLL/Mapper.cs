@@ -49,6 +49,26 @@ namespace BLL
             return nuevo;
         }
 
+        public static BIZ.Tarjeta Map(DAL.Tarjeta viejo)
+        {
+
+            BIZ.Tarjeta nuevo = new BIZ.Tarjeta();
+            if (viejo == null) return nuevo;
+
+            nuevo.m_Cliente = Map(viejo.Cliente);
+            nuevo.Marca = (BIZ.Tarjeta.Marcas)viejo.Marca;
+            nuevo.Numero = viejo.Numero;
+            nuevo.SaldoMax = viejo.SaldoMaximo;
+            nuevo.Tipo = (BIZ.Tarjeta.Tipos)viejo.Tipo;
+            nuevo.m_EstadoTarjeta = (BIZ.EstadoTarjeta)viejo.Estado;
+            nuevo.Extensiones = null;
+
+#warning Revisar nuevo.Extensiones ya que puede ser una función ciclica
+            ///Ni tampoco se que valor va ahí, ya que es re raro, dal.tarjeta tiene un 1 o un dos que no se que carajos es eso 
+
+            return nuevo;
+        }
+
         public static DAL.Cliente Map(BIZ.Cliente viejo)
         {
             DAL.Cliente nuevo = new DAL.Cliente();
