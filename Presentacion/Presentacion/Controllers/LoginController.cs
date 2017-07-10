@@ -51,7 +51,7 @@ namespace Presentacion.Controllers
 
         }
 
-        public static bool IsUserLog()
+        public bool IsUserLog()
         {
             return System.Web.HttpContext.Current.Session["usuarioIniciado"] != null;
         }

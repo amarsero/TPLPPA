@@ -25,5 +25,17 @@
 
     };
 
+    service.IsUserLog = function () {
+        var promise = $http({
+            method: 'get',
+            encoding: 'JSON',
+            url: '/Login/IsUserLog',
+          
+        });
+
+        return $q.when(promise);
+
+    };
+
     return service;
 });

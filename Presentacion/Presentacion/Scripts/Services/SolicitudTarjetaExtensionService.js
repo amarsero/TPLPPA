@@ -24,11 +24,12 @@
         return $q.when(promise);
 
     };
-    service.NuevaTarjeta = function (tarjeta) {
+    service.NuevaTarjeta = function (tarjeta,dni) {
         var promise = $http({
             method: 'post',
             url: '/SolicitudTarjetaExtension/NuevaTarjeta',
-            data: { tarjeta: tarjeta }
+            data: { tarjeta: tarjeta},
+            params: { dni: dni }
         });
 
         return $q.when(promise);

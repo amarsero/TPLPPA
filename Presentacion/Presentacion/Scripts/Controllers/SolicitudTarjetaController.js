@@ -1,5 +1,24 @@
-﻿angular.module('app').controller("SolicitudTarjetaController", ["$scope", "$location", "SolicitudTarjetaService",
-    function ($scope, $location, SolicitudTarjetaService) {
+﻿angular.module('app').controller("SolicitudTarjetaController", ["$scope", "$location", "SolicitudTarjetaService", "LoginService",
+    function ($scope, $location, SolicitudTarjetaService, LoginService) {
+
+
+        var VerificarLogin = function () {
+            LoginService.IsUserLog().then(
+                function (d) {
+                    if (d.data == "False") {
+                        $location.path("/login");
+                    }
+                },
+                function (error) {
+
+                    $scope.Titulo = "Error";
+
+                }
+            );
+        }
+
+        VerificarLogin();
+
         $scope.Procesando = false;
         $scope.Titulo = "Datos del nuevo cliente, solicitud nueva tarjeta.";
         $scope.estados = [];

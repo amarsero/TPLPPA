@@ -9,12 +9,12 @@ namespace BLL
 {
     public class BLLTarjeta
     {
-        public void CrearTarjeta(Tarjeta tarjeta)
+        public void CrearTarjeta(Tarjeta tarjeta,int dni)
         {
 
             DAL.DAOTarjeta dao = new DAL.DAOTarjeta();
             DAL.DAOCliente cdao = new DAL.DAOCliente();
-            tarjeta.m_Cliente = Mapper.Map(cdao.ObtenerPorDNI(12311312));
+            tarjeta.m_Cliente = Mapper.Map(cdao.ObtenerPorDNI(dni));
 
             DAL.Tarjeta tarjetita = Mapper.Map(tarjeta);
 

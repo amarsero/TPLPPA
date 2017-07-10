@@ -14,14 +14,9 @@ namespace Presentacion.Controllers
         // GET: /SolicitudTarjeta/
         public ActionResult Index()
         {
-            if (LoginController.IsUserLog())
-            {
+
                 return View();
-            }
-            else
-            {
-                throw new Exception("Usuario no logeado");
-            }
+
                
 
             
