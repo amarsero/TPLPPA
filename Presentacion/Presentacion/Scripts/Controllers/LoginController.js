@@ -31,10 +31,22 @@
     };
 
     var VerificarLogin = function () {
+        if ($location.search().logout == "true") {
+            LoginService.LogOut().then(
+                function (d) {
+                  
+                },
+                function (error) {
+
+                    $scope.Titulo = "Error";
+
+                }
+            );
+        }
         LoginService.IsUserLog().then(
             function (d) {
                 if (d.data == "True") {
-                    $location.path("#!/solicitudtarjeta");
+                    $location.path("/solicitudtarjeta");
                 }
             },
             function (error) {

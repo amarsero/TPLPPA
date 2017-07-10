@@ -17,6 +17,8 @@ namespace BIZ {
 	/// </summary>
 	public class Terminal {
 
+        public int CodigoTerminal { get; set; }
+
 		public string _Descripcion;
 		public BIZ.Empleado m_Empleado;
 		public BIZ.ImpresoraSingleton m_ImpresoraSingleton;

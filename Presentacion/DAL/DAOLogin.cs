@@ -25,10 +25,32 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                ErrorLogger.WriteErrorLog(ex.Message,ex.ToString());
+                ErrorLogger.WriteErrorLog(ex.Message, ex.ToString());
                 return null;
             }
 
+        }
+
+        public Terminal ObtenerTerminalEmpleado(int dni)
+        {
+            try
+            {
+                Terminal Terminal = new Terminal();
+                using (LPPAEntities BD = new LPPAEntities())
+                {
+
+                    Terminal = BD.Terminal.Where(a => a.DNIEmpleado == dni).FirstOrDefault();
+
+
+                }
+
+                return Terminal;
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.WriteErrorLog(ex.Message, ex.ToString());
+                return null;
+            }
         }
     }
 }

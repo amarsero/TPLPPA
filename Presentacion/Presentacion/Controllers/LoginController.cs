@@ -22,13 +22,16 @@ namespace Presentacion.Controllers
 
         [HttpGet]
         //Metodo para obtener el usuario actual conectado, despues cambiale el retorno a un objeto de tipo Usuario o Empleado
-        public BIZ.Cliente GetCurrentUser()
+        public string GetCurrentUser()
         {
-            BIZ.Cliente Empleado = new BIZ.Cliente();
-            Empleado.Cuit = 123123123;
 
-            //Aca poner un breackpoint y fijate si te entra, anda probando tocando la configuracion del login service hasta que llega aca.
-            return Empleado;
+            return Newtonsoft.Json.JsonConvert.SerializeObject(System.Web.HttpContext.Current.Session["usuarioIniciado"]);
+        }
+
+        public string GetCurrentTerminal()
+        {
+
+            return Newtonsoft.Json.JsonConvert.SerializeObject(System.Web.HttpContext.Current.Session["terminalIniciado"]);
         }
 
         [HttpGet]
@@ -37,12 +40,15 @@ namespace Presentacion.Controllers
             try
             {
                 BIZ.Empleado Empelado = new BIZ.Empleado();
+                BIZ.Terminal Terminal = new BIZ.Terminal();
                 BLL.BLLLogin Login = new BLL.BLLLogin();
-                Empelado = Login.IniciarSesion(usuario,password);
+                Empelado = Login.IniciarSesion(usuario, password);
+                Terminal = Login.ObtenerTerminalEmpleado(Empelado.DNI);
                 System.Web.HttpContext.Current.Session["usuarioIniciado"] = Empelado;
+                System.Web.HttpContext.Current.Session["terminalIniciado"] = Terminal;
                 return Newtonsoft.Json.JsonConvert.SerializeObject(Empelado);
             }
-            catch(Exception)
+            catch (Exception)
             {
                 throw new Exception("Usuario o contraseña incorrectos.");
             }
@@ -54,6 +60,13 @@ namespace Presentacion.Controllers
         public bool IsUserLog()
         {
             return System.Web.HttpContext.Current.Session["usuarioIniciado"] != null;
+        }
+
+        [HttpPost]
+        public void LogOut()
+        {
+            System.Web.HttpContext.Current.Session["usuarioIniciado"] = null;
+            System.Web.HttpContext.Current.Session["terminalIniciado"] = null;
         }
     }
 }

@@ -13,12 +13,34 @@
 
     };
 
+    service.GetCurrentTerminal = function () {
+        var promise = $http({
+            method: 'get',
+            url: '/Login/GetCurrentTerminal'
+        });
+
+        return $q.when(promise);
+
+    };
+
     service.IniciarSesion = function (User) {
         var promise = $http({
             method: 'get',
             encoding: 'JSON',
             url: '/Login/IniciarSesion',
             params: {usuario: User.Usuario, password: User.Password}
+        });
+
+        return $q.when(promise);
+
+    };
+
+    service.LogOut = function (User) {
+        var promise = $http({
+            method: 'post',
+            encoding: 'JSON',
+            url: '/Login/LogOut',
+            
         });
 
         return $q.when(promise);

@@ -17,6 +17,8 @@ namespace BIZ {
     [DataContract]
 	public class Tarjeta : EntityBase{
 
+        public int IdTerminal { get; set; }
+
 		public enum Marcas : int {
 
 			Visa,

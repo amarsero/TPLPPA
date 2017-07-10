@@ -19,6 +19,21 @@ angular.module('app').controller("SolicitudTarjetaExtensionController", ["$scope
 
         VerificarLogin();
 
+        var ObtenerTerminal = function () {
+            LoginService.GetCurrentTerminal().then(
+                function (d) {
+                    $scope.terminalActual = d.data.CodigoTerminal;
+                },
+                function (error) {
+
+                    $scope.Titulo = "Error";
+
+                }
+            );
+        }
+
+        ObtenerTerminal();
+
         $scope.TitularObtenido = false;
         $scope.Procesando = false;
         $scope.MostrarInformacion = false;
@@ -91,7 +106,7 @@ angular.module('app').controller("SolicitudTarjetaExtensionController", ["$scope
                 $scope.Tarjeta.m_EstadoTarjeta = 1;
 
 
-                SolicitudTarjetaExtensionService.NuevaTarjeta(JSON.stringify($scope.Tarjeta),$scope.dniTitular).then(function () {
+                SolicitudTarjetaExtensionService.NuevaTarjeta(JSON.stringify($scope.Tarjeta), $scope.dniTitular, $scope.terminalActual).then(function () {
                     $scope.Procesando = false;
                         $scope.MostrarInformacion = true;
                         $scope.ErrorProceso = false;

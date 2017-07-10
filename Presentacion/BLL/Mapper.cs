@@ -38,7 +38,7 @@ namespace BLL
             nuevo.DNICliente = viejo.m_Cliente.NroDocumento;
             nuevo.Estado = (int)viejo.m_EstadoTarjeta;
             nuevo.Extension = viejo.Extensiones == null ? 1 : 2;
-            nuevo.IdTerminalImpresion = 2;
+            nuevo.IdTerminalImpresion = viejo.IdTerminal;
             nuevo.Marca = (int)viejo.Marca;
             nuevo.Numero = (int)new Random().Next();
             nuevo.SaldoMaximo = viejo.SaldoMax;
