@@ -14,7 +14,12 @@ namespace Presentacion.Controllers
         // GET: /SolicitudTarjeta/
         public ActionResult Index()
         {
-            return View();
+
+                return View();
+
+               
+
+            
         }
 
         [HttpPost]

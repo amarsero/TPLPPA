@@ -33,13 +33,13 @@ namespace Presentacion.Controllers
         }
 
         [HttpPost]
-        public void NuevaTarjeta(object tarjeta)
+        public void NuevaTarjeta(object tarjeta, int dni)
         {
             Tarjeta tar = Newtonsoft.Json.JsonConvert.DeserializeObject<Tarjeta>(tarjeta.ToString());
 
             BLL.BLLTarjeta bll = new BLL.BLLTarjeta();
 
-            bll.CrearTarjeta(tar);
+            bll.CrearTarjeta(tar,dni);
 
         }
 

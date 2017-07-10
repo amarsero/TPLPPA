@@ -1,4 +1,4 @@
-﻿angular.module('app').controller("LoginController", ["$scope","LoginService", function ($scope,LoginService) {
+﻿angular.module('app').controller("LoginController", ["$scope", "LoginService", "$location", function ($scope, LoginService, $location) {
 
  
 
@@ -29,6 +29,23 @@
 
         );
     };
+
+    var VerificarLogin = function () {
+        LoginService.IsUserLog().then(
+            function (d) {
+                if (d.data == "True") {
+                    $location.path("#!/solicitudtarjeta");
+                }
+            },
+            function (error) {
+
+                $scope.Titulo = "Error";
+
+            }
+        );
+    }
+
+    VerificarLogin();
 
 
     // Cada vez que se cargue la web de login se va a llamar a este metodo asincronicamente para verificar si la sesion esta no iniciada.

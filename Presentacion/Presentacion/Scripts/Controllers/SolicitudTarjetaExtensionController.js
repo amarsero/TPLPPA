@@ -1,6 +1,24 @@
 ﻿var fuckyoumom;
-angular.module('app').controller("SolicitudTarjetaExtensionController", ["$scope", "$location", "SolicitudTarjetaExtensionService",
-    function ($scope, $location, SolicitudTarjetaExtensionService) {
+angular.module('app').controller("SolicitudTarjetaExtensionController", ["$scope", "$location", "SolicitudTarjetaExtensionService", "LoginService",
+    function ($scope, $location, SolicitudTarjetaExtensionService,LoginService) {
+
+        var VerificarLogin = function () {
+            LoginService.IsUserLog().then(
+                function (d) {
+                    if (d.data == "False") {
+                        $location.path("/login");
+                    }
+                },
+                function (error) {
+
+                    $scope.Titulo = "Error";
+
+                }
+            );
+        }
+
+        VerificarLogin();
+
         $scope.TitularObtenido = false;
         $scope.Procesando = false;
         $scope.MostrarInformacion = false;
@@ -21,11 +39,18 @@ angular.module('app').controller("SolicitudTarjetaExtensionController", ["$scope
                     $scope.ErrorProceso = true;
                     $scope.Informacion = "No existe el dni ingresado.";
                 }
-                else if (response.data[1].Nombre == null){
+                else if (response.data[1] == null){
                     $scope.cliente = response.data[0];
                     $scope.dniTitular = response.data[0].NroDocumento;
                     $scope.nombreTitular = response.data[0].Nombre;
                     $scope.TitularObtenido = true;
+                    SolicitudTarjetaExtensionService.ObtenerImagen($scope.nombreTitular + $scope.dniTitular + ".png").then(function (response) {
+                        $scope.imagenicono = response.data;
+                    },
+                        function (error) {
+                        }
+
+                    );
                 }
                 else {
                     $scope.cliente = response.data[0];
@@ -66,7 +91,7 @@ angular.module('app').controller("SolicitudTarjetaExtensionController", ["$scope
                 $scope.Tarjeta.m_EstadoTarjeta = 1;
 
 
-                SolicitudTarjetaExtensionService.NuevaTarjeta(JSON.stringify($scope.Tarjeta)).then(function () {
+                SolicitudTarjetaExtensionService.NuevaTarjeta(JSON.stringify($scope.Tarjeta),$scope.dniTitular).then(function () {
                     $scope.Procesando = false;
                         $scope.MostrarInformacion = true;
                         $scope.ErrorProceso = false;
