@@ -12,11 +12,11 @@
         return $q.when(promise);
 
     };
-    service.SubirFoto = function (foto, path) {
+    
+    service.ReporteTarjetasPorEmpleado = function () {
         var promise = $http({
-            method: 'POST',
-            url: '/Reportes/SubirImagen',
-            data: '{ "foto" : "' + foto.substring(22) + '" , "path" :  "' + path + '"  }'
+            method: 'GET',
+            url: '/Reportes/ReporteTarjetasPorEmpleado'
         });
 
         return $q.when(promise);

@@ -15,4 +15,18 @@
                 );
         }
 
+        $scope.ReporteTarjetasPorEmpleado = function () {
+            ReportesService.ReporteTarjetasPorEmpleado().then(function (response) {
+                console.log(response.data);
+                eval(response.data);
+            },
+                    function (error) {
+                        alert("wow la cagamo");
+                    }
+
+                );
+        }
+
+
+
     }])

@@ -14,11 +14,9 @@ namespace DAL
         {
             try
             {
-
                 _db.Tarjeta.Add(tarjeta);
                 _db.Entry(tarjeta.Cliente).State = System.Data.Entity.EntityState.Modified;
                 _db.SaveChanges();
-
             }
             catch (Exception ex)
             {
