@@ -26,7 +26,7 @@
                 $scope.ListaTarjetas = response.data;
             },
                     function (error) {
-                        alert("wow la cagamo");
+                       
                     }
 
                 );
@@ -51,6 +51,41 @@
         $scope.ObtenerTipo = function (num) {
             if (num == 0) return "Titular";
             return "Adjunta";
+        }
+
+        $scope.Buscar = function () {
+            var resultado = [];
+            for (var i = 0; i < $scope.ListaTarjetas.length; i++) {
+                var cumplemarca = false;
+                var cumplesaldo = false;
+                
+
+                if ($scope.FiltroMarca > 0) {
+                    if ($scope.ListaTarjetas[i].Marca == $scope.FiltroMarca){
+                        cumplemarca = true;
+                    }
+
+                } else {
+                    cumplemarca = true;
+                }
+
+                if ($scope.FiltroSaldo > 0) {
+                    if ($scope.ListaTarjetas[i].SaldoMax <= $scope.FiltroSaldo) {
+                        cumplesaldo = true;
+                    }
+
+                } else {
+                    cumplesaldo = true;
+                }
+
+                if (cumplemarca == true && cumplesaldo == true){
+                    resultado.push($scope.ListaTarjetas[i]);
+                }
+
+            }
+
+            $scope.ListaTarjetas = resultado;
+
         }
 
     }]);

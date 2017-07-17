@@ -75,7 +75,7 @@ angular.module('app').controller("SolicitudTarjetaExtensionController", ["$scope
                     $scope.nombreConyuge = response.data[1].Nombre;
                     $scope.dniConyuge = response.data[1].NroDocumento;
                     $scope.informacionConyuge = "tiene de conyuge a " + $scope.nombreConyuge +
-                        "con dni: " + $scope.dniConyuge + " ";
+                        " DNI: " + $scope.dniConyuge + " ";
                     $scope.TitularObtenido = true;
                     SolicitudTarjetaExtensionService.ObtenerImagen($scope.nombreTitular+$scope.dniTitular+".png").then(function (response) {
                         $scope.imagenicono = response.data;

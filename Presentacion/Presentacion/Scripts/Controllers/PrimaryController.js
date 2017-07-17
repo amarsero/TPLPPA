@@ -5,7 +5,11 @@
 // =====================================
 app.config(function ($routeProvider) {
     $routeProvider
-        
+        .when('/home',
+        {
+            templateUrl: 'Home.html',
+            controller: 'HomeController'
+        })
         .when('/login',
         {
             templateUrl: 'login.html',
@@ -41,3 +45,6 @@ app.config(function ($routeProvider) {
         });
 });
 
+app.controller("HomeController", function ($scope) {
+
+})

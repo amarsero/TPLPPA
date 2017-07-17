@@ -11,7 +11,7 @@
     <div class="logo">{{Titulo}}</div>
     <!-- Main Form -->
     <div class="login-form-1">
-        <form class="form-signin" ng-submit="IniciarSesion()">
+        <form class="form-signin" ng-show="!loading" ng-submit="IniciarSesion()">
             <div class="login-form-main-message"></div>
             <div class="main-login-form">
                 <div class="login-group">
@@ -34,6 +34,7 @@
                 <p>Ante un problema de inicio de sesion contactar al administrador.</p>
             </div>
         </form>
+        <img width="100" height="100" ng-show="loading" src="../Images/loading.gif" />
     </div>
     <!-- end:Main Form -->
 </div>

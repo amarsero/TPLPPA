@@ -1,8 +1,16 @@
 ﻿
-.contenido_pagina{
+.contenido_pagina {
     padding-top: 2%;
+    float: right;
+    width: 85%;
 }
+
+.clear {
+    clear: both;
+}
+
 .navbar-twitch {
+    float: left;
     position: fixed;
     top: 0px;
     left: 0px;
@@ -98,7 +106,7 @@
 
     .navbar-twitch .tooltip,
     .navbar-twitch .tooltip .tooltip-inner {
-        max-width:initial;
+        max-width: initial;
         white-space: nowrap;
     }
 

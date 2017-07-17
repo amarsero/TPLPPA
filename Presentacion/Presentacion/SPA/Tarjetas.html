@@ -7,6 +7,26 @@
             <div class="panel panel-body form-horizontal">
                 <div class="row">
                     <div class="col-md-12">
+                        <h4>Filtros</h4>
+                        <table>
+                            <td>
+                                <select ng-model="FiltroMarca" class="form-control" id="status" name="Marca">
+                                    <option value="0">Visa</option>
+                                    <option value="1">American Express</option>
+                                    <option value="2">Master Card</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input class="form-control" placeholder="Saldo maximo" ng-model="FiltroSaldo" />
+                            </td>
+                            <td>
+                                <button ng-click="Buscar()" class="btn glyphicon glyphicon-search"></button>
+                            </td>
+                        </table>
+                        <br />
+                        <button class="btn btn-primary" ng-click="ObtenerTarjetas()">Ver todas</button>
+                        <br />
+                        <br />
                         <table class="table table-striped table-bordered table-hover table-condensed">
                             <thead>
                                 <tr>
