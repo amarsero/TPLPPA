@@ -14,7 +14,7 @@ namespace DAL
 
         static string getConnectionString()
         {
-            return String.Format("workstation id=LPPADATABASE.mssql.somee.com;packet size=4096;user id=aguseselmejor_SQLLogin_1;pwd=8lwwo9oaox;data source=LPPADATABASE.mssql.somee.com;persist security info=False;initial catalog=LPPADATABASE");
+            return String.Format("workstation id=LPPADATABASE.mssql.somee.com;packet size=4096;user id=aguseselmejor_SQLLogin_1;pwd=123456789;data source=LPPADATABASE.mssql.somee.com;persist security info=False;initial catalog=LPPADATABASE");
         }
 
         public static SqlConnection Instancia
