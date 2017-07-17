@@ -2,6 +2,37 @@
 
 <div class="home">
     <h1>Sistema gestor de tarjetas</h1>
-    <h4>Bienvenido!</h4>
+    <h4>Clientes dados de alta por el usuario:</h4>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div ng-repeat="x in ListaClientes" class="col-md-4">
+                        <div class="thumbnail">
+                            <img width="240" height="320"  alt="Bootstrap Thumbnail First" src="../FotosUsuarios/{{x.RutaImg}}" />
+                            <div class="caption">
+                                <h3>
+                                    {{x.Nombre}}
+                                </h3>
+                                <p>
+                                   <ul>
+                                       <li>
+                                           DNI: {{x.NroDocumento}}
+                                       </li>
+                                       <li>
+                                           Ingresos mensuales: ${{x.IngresosMensualesAprox}}
+                                       </li>
+                                       <li>
+                                           Domicilio: {{x.Domicilio}}
+                                       </li>
+                                   </ul>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
 
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

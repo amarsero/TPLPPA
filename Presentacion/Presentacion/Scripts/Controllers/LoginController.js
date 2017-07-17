@@ -49,7 +49,7 @@
             function (d) {
                 $scope.Titulo = "Sesion iniciada, bienvenido " + d.data.Nombre;;
                 $scope.loading = false;
-                $location.path("/solicitudtarjeta");
+                $location.path("/home");
             },
             function (error) {
 

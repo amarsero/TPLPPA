@@ -11,64 +11,71 @@
 
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using System.IO;
 
-namespace BIZ {
+namespace BIZ
+{
     [DataContract]
-	public class Cliente : EntityBase {
+    public class Cliente : EntityBase
+    {
 
-		public enum TiposDocumentos : int {
+        public enum TiposDocumentos : int
+        {
 
-			DNI,
-			CI,
-			LC,
-			LD
+            DNI,
+            CI,
+            LC,
+            LD
 
-		}//end tiposDocumentos
+        }//end tiposDocumentos
 
-		/// <summary>
-		/// end tiposDocumentos
-		/// </summary>
-		public enum Sexos : int {
+        /// <summary>
+        /// end tiposDocumentos
+        /// </summary>
+        public enum Sexos : int
+        {
 
-			Femenino,
-			Masculino
+            Femenino,
+            Masculino
 
-		}//end Sexos
+        }//end Sexos
 
-		/// <summary>
-		/// end Sexos
-		/// </summary>
-		public enum EstadosCiviles : int {
+        /// <summary>
+        /// end Sexos
+        /// </summary>
+        public enum EstadosCiviles : int
+        {
 
-			Soltero,
-			Casado,
-			Divorciado,
-			Viudo
+            Soltero,
+            Casado,
+            Divorciado,
+            Viudo
 
-		}//end EstadosCiviles
+        }//end EstadosCiviles
 
         public enum Bancos : int
         {
-        HSBC,
-        SANTANDER,
-        CITI,
-        GALICIA
+            HSBC,
+            SANTANDER,
+            CITI,
+            GALICIA
         }
 
         /// <summary>
         /// end EstadosCiviles
         /// </summary>
-        public enum SituacionesLaborales : int {
+        public enum SituacionesLaborales : int
+        {
 
-			Empleado,
-			Desempleado
+            Empleado,
+            Desempleado
 
-		}//end SituacionesLaborales
+        }//end SituacionesLaborales
 
-		/// <summary>
-		/// end SituacionesLaborales
-		/// </summary>
-		private int _cuit;
+        /// <summary>
+        /// end SituacionesLaborales
+        /// </summary>
+        private int _cuit;
         private int? _dniConyugue;
 
         public int? DniConyugue
@@ -76,83 +83,104 @@ namespace BIZ {
             get { return _dniConyugue; }
             set { _dniConyugue = value; }
         }
-		private string _domicilio;
-		private Cliente.EstadosCiviles _estadoCivil;
-		private System.DateTime _fechaNac;
-		private int? _ingresosMensualesAprox;
-		private string _nombre;
-		private int _nroDocumento;
-		private Cliente.Sexos _sexo;
-		private Cliente.SituacionesLaborales _situacionLaboral;
-		private Cliente.TiposDocumentos _tipoDocumento;
+        private string _domicilio;
+        private Cliente.EstadosCiviles _estadoCivil;
+        private System.DateTime _fechaNac;
+        private int? _ingresosMensualesAprox;
+        private string _nombre;
+        private int _nroDocumento;
+        private Cliente.Sexos _sexo;
+        private Cliente.SituacionesLaborales _situacionLaboral;
+        private Cliente.TiposDocumentos _tipoDocumento;
 
-		public Cliente(){
+        public Cliente()
+        {
 
-		}
+        }
 
-		~Cliente(){
+        ~Cliente()
+        {
 
-		}
+        }
 
 
         [DataMember]
-		public int Cuit{
-			get;
-			set;
-		}
+        public int Cuit
+        {
+            get;
+            set;
+        }
         [DataMember]
-		public string Domicilio{
-			get;
-			set;
-		}
+        public string Domicilio
+        {
+            get;
+            set;
+        }
         [DataMember]
-		public EstadosCiviles EstadoCivil{
-			get;
-			set;
-		}
+        public EstadosCiviles EstadoCivil
+        {
+            get;
+            set;
+        }
         [DataMember]
-		public System.DateTime FechaNac {
-			get;
-			set;
-		}
+        public System.DateTime FechaNac
+        {
+            get;
+            set;
+        }
         [DataMember]
-		public int? IngresosMensualesAprox{
-			get;
-			set;
-		}
+        public int? IngresosMensualesAprox
+        {
+            get;
+            set;
+        }
         [DataMember]
-		public string Nombre{
-			get;
-			set;
-		}
+        public string Nombre
+        {
+            get;
+            set;
+        }
         [DataMember]
-		public int NroDocumento{
-			get;
-			set;
-		}
+        public int NroDocumento
+        {
+            get;
+            set;
+        }
         [DataMember]
-		public string RutaImg{
-			get
+        public string RutaImg
+        {
+            
+            get
             {
-                return Nombre + NroDocumento.ToString()+".png";
+                string rutaimg = ".../Presentacion/FotosUsuarios/" + Nombre + NroDocumento.ToString() + ".png";
+                if (File.Exists(rutaimg))
+                {
+                    return Nombre + NroDocumento.ToString() + ".png";
+
+                }else{
+                    return "Default.png";
+                }
             }
-		    private set{}
-		}
+           
+        }
         [DataMember]
-		public Sexos Sexo{
-			get;
-			set;
-		}
+        public Sexos Sexo
+        {
+            get;
+            set;
+        }
         [DataMember]
-		public SituacionesLaborales SituacionLaboral{
-			get;
-			set;
-		}
+        public SituacionesLaborales SituacionLaboral
+        {
+            get;
+            set;
+        }
         [DataMember]
-		public TiposDocumentos TipoDocumento{
-			get;
-			set;
-		}
+        public TiposDocumentos TipoDocumento
+        {
+            get;
+            set;
+        }
         [DataMember]
         public string Email { get; set; }
         [DataMember]

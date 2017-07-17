@@ -56,6 +56,19 @@ namespace DAL
             }
         }
 
+        public Cliente[] GetAll()
+        {
+            try
+            {
+                return _db.Cliente.ToArray();
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.WriteErrorLog(ex.Message, ex.ToString());
+            }
+            return null;
+        }
+
         public Cliente ObtenerPorDNI(int dni)
         {
 

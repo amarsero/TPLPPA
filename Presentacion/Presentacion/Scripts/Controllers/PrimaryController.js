@@ -8,7 +8,7 @@ app.config(function ($routeProvider) {
         .when('/home',
         {
             templateUrl: 'Home.html',
-            controller: 'HomeController'
+            controller: 'IndexController'
         })
         .when('/login',
         {

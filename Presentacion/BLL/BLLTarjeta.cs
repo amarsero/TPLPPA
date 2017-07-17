@@ -34,5 +34,19 @@ namespace BLL
 
             return tarjetas;
         }
+
+        public object ObtenerClientes()
+        {
+            DAL.DAOCliente dao = new DAL.DAOCliente();
+            DAL.Cliente[] listadal = dao.GetAll();
+            Cliente[] clientes = new Cliente[listadal.Length];
+
+            for (int i = 0; i < listadal.Length; i++)
+            {
+                clientes[i] = Mapper.Map(listadal[i]);
+            }
+
+            return clientes;
+        }
     }
 }
