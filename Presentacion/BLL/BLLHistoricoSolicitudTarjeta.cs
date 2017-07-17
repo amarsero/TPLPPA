@@ -22,5 +22,12 @@ namespace BLL
 
             return dao.ObtenerHistoricoSolicitudTarjetasPorEmpleado();
         }
+
+        public Tuple<int, int>[] ObtenerHistoricoSolicitudTarjetasPorAño()
+        {
+            DAOHistoricoSolicitudTarjetas dao = new DAOHistoricoSolicitudTarjetas();
+
+            return dao.ObtenerHistoricoSolicitudTarjetasPorAño();
+        }
     }
 }

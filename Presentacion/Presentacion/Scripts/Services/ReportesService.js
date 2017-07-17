@@ -22,6 +22,15 @@
         return $q.when(promise);
 
     };
+    service.ReporteTarjetasAnuales = function () {
+        var promise = $http({
+            method: 'GET',
+            url: '/Reportes/ReporteTarjetasAnuales'
+        });
 
+        return $q.when(promise);
+
+    };
+    
     return service;
 });

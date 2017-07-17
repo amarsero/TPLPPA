@@ -29,6 +29,17 @@
 
                 );
         }
+        $scope.ReporteTarjetasAnuales = function () {
+            ReportesService.ReporteTarjetasAnuales().then(function (response) {
+                eval(response.data);
+            },
+                    function (error) {
+                        alert("wow la cagamo");
+                    }
+
+                );
+        }
+        
 
         $scope.ReporteTarjetasPorEmpleado = function () {
             ReportesService.ReporteTarjetasPorEmpleado().then(function (response) {
