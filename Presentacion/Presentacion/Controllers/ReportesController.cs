@@ -28,16 +28,16 @@ namespace Presentacion.Controllers
         .SetSeries(new Series
         {
             Data = new Data(new object[] { 29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4 }),
-            Name = "Judios muertos"
+            Name = "Tarjetas"
         });
             chart.SetYAxis(new YAxis()
                 {
                     Title = new YAxisTitle()
                     {
-                        Text = "En millones"
+                        Text = "En miles"
                     }
                 });
-            chart.SetTitle(new Title() { Text = "Judios muertos en Alemania en 1939" });
+            chart.SetTitle(new Title() { Text = "Ventas del año pasado" });
 
             
             string cadena = chart.ToHtmlString();
@@ -92,7 +92,7 @@ namespace Presentacion.Controllers
             chart.SetSeries(new Series()
                 {
                     Data = new Data(datos),
-                    Name = "Empleados"
+                    Name = "Tarjetas"
                 });
             string[] cat = new string[hist.Length];
             for (int i = 0; i < hist.Length; i++)

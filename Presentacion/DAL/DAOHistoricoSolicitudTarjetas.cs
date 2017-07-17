@@ -38,7 +38,7 @@ namespace DAL
                     }).AsEnumerable()
                     .Select(x => Tuple.Create
                         (x.nombre, x.cant )
-                        ).ToArray();
+                        ).Where(x => x.Item2 > 0).ToArray();
                 Logger.Trace("DAL.ObtenerHistoricoSolicitudTarjetas() -> se obtuvo el historio de tarjetas");
             }
             catch (Exception ex)
