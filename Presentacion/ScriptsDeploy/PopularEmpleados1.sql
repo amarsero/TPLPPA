@@ -47,7 +47,7 @@ SET @RowCount = 0
 
 --select CONVERT(varchar(255), NEWID())
 BEGIN TRANSACTION;
-WHILE @rowcount < 10000
+WHILE @rowcount < 100
 BEGIN
 
 SET @rowcount = @rowcount + 1;

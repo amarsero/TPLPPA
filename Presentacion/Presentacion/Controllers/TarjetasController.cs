@@ -18,15 +18,15 @@ namespace Presentacion.Controllers
         public string ObtenerTarjetas()
         {
             BLL.BLLTarjeta bll = new BLL.BLLTarjeta();
-
-            return Newtonsoft.Json.JsonConvert.SerializeObject(bll.ObtenerTarjetas());
+            return "";
+            //return Newtonsoft.Json.JsonConvert.SerializeObject(bll.ObtenerTarjetas());
         }
 
         public string ObtenerClientes()
         {
             BLL.BLLTarjeta bll = new BLL.BLLTarjeta();
-
-            return Newtonsoft.Json.JsonConvert.SerializeObject(bll.ObtenerClientes());
+            return "";
+            //return Newtonsoft.Json.JsonConvert.SerializeObject(bll.ObtenerClientes());
         }
     }
 }
