@@ -20,5 +20,19 @@ namespace BLL
 
             dao.AgregarTarjeta(tarjetita);
         }
+
+        public Tarjeta[] ObtenerTarjetas()
+        {
+            DAL.DAOTarjeta dao = new DAL.DAOTarjeta();
+            DAL.Tarjeta[] listadal = dao.ObtenerTarjetas();
+            Tarjeta[] tarjetas = new Tarjeta[listadal.Length];
+
+            for (int i = 0; i < listadal.Length; i++)
+            {
+                tarjetas[i] = Mapper.Map(listadal[i]);
+            }
+
+            return tarjetas;
+        }
     }
 }

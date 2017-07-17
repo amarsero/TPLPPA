@@ -55,6 +55,7 @@
     <Compile Include="Conexion.cs" />
     <Compile Include="DAOBase.cs" />
     <Compile Include="DAOCliente.cs" />
+    <Compile Include="DAOHistoricoSolicitudTarjetas.cs" />
     <Compile Include="DAOLogin.cs" />
     <Compile Include="DAOTarjeta.cs" />
     <Compile Include="DB_LPPA.Context.cs">

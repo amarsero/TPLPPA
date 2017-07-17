@@ -8,7 +8,7 @@
 
     <link href="/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="/Content/Site.css" rel="stylesheet" />
-    <link href="/Content/jquery-ui.min.css" rel="stylesheet" />   
+    <link href="/Content/jquery-ui.min.css" rel="stylesheet" />
 
     <script src="/Scripts/jquery-1.10.2.min.js"></script>
     <script src="/Scripts/angular.min.js"></script>
@@ -17,12 +17,13 @@
     <script src="/Scripts/jquery-ui.min.js"></script>
     <script src="/Scripts/ui-bootstrap-tpls.js"></script>
     <script src="/Scripts/jquery-ui-datepicker.js"></script>
-   
+
     <script src="/Scripts/Controllers/PrimaryController.js"></script>
     <!--Servicios-->
     <script src="/Scripts/Services/SolicitudTarjetaService.js"></script>
     <script src="/Scripts/Services/LoginService.js"></script>
     <script src="/Scripts/Services/ReportesService.js"></script>
+    <script src="/Scripts/Services/TarjetasService.js"></script>
     <script src="/Scripts/Services/SolicitudTarjetaExtensionService.js"></script>
     <!--Controladores-->
     <script src="/Scripts/Controllers/LoginController.js"></script>
@@ -30,86 +31,95 @@
     <script src="/Scripts/Controllers/SolicitudTarjetaController.js"></script>
     <script src="/Scripts/Controllers/SolicitudTarjetaExtensionController.js"></script>
     <script src="/Scripts/Controllers/ReportesController.js"></script>
-    
+    <script src="/Scripts/Controllers/TarjetasController.js"></script>
+
 </head>
 <body ng-app="app" ng-controller="IndexController">
 
 
-        <!--<nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" ng-show="verTitulo" href="#">{{Titulo}}</a>
-                </div>
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle">Administrador<strong class="caret"></strong></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#">Registrar nuevo usuario</a>
-                            </li>
-                            <li>
-                                <a href="#">Gestionar usuarios</a>
-                            </li>
-                            <li>
-                                <a href="#">Gestion de parametros</a>
-                            </li>
-
-                        </ul>
-                    </li>
-                    <li><a href="#!/solicitudtarjeta">Registrar nuevo cliente titular</a></li>
-                    <li><a href="#!/solicitudtarjetaextension">Asignar tarjeta extension</a></li>
-                    <li><a href="#!/solicitudtarjeta">Asignacion manual tarjeta cliente</a></li>
-                    <li><a href="#!/solicitudtarjeta">Impresion manual de tarjetas</a></li>
-
-                </ul>
+    <!--<nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" ng-show="verTitulo" href="#">{{Titulo}}</a>
             </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle">Administrador<strong class="caret"></strong></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#">Registrar nuevo usuario</a>
+                        </li>
+                        <li>
+                            <a href="#">Gestionar usuarios</a>
+                        </li>
+                        <li>
+                            <a href="#">Gestion de parametros</a>
+                        </li>
 
-           
-        </nav>-->
+                    </ul>
+                </li>
+                <li><a href="#!/solicitudtarjeta">Registrar nuevo cliente titular</a></li>
+                <li><a href="#!/solicitudtarjetaextension">Asignar tarjeta extension</a></li>
+                <li><a href="#!/solicitudtarjeta">Asignacion manual tarjeta cliente</a></li>
+                <li><a href="#!/solicitudtarjeta">Impresion manual de tarjetas</a></li>
 
-        <div class="navbar navbar-inverse navbar-twitch" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">
-                        <span class="small-nav"> <span class="logo"></span> </span>
-                        <span class="full-nav"> < Bootsnipp > </span>
-                    </a>
-                </div>
-                <div class="">
-                    <ul class="nav navbar-nav">
-                        <li class="active">
-                            <a href="#">
-                                <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Home">
-                                    <span class="glyphicon glyphicon-home"></span>
-                                </span>
-                                <span class="full-nav"> Home </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#!/solicitudtarjeta">
-                                <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Solicitud tarjeta">
-                                    <span  class="glyphicon glyphicon-credit-card"></span>
-                                </span>
-                                <span class="full-nav">Registrar tarjeta de nuevo cliente</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#!/solicitudtarjetaextension">
-                                <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Solicitar tarjeta extension">
-                                    <span class="glyphicon glyphicon-shopping-cart"></span>
-                                </span>
-                                <span class="full-nav"> Solicitar tarjeta extension </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#!/reportes">
-                                <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Reportes">
-                                    <span class="glyphicon glyphicon-signal"></span>
-                                </span>
-                                <span class="full-nav"> Reportes</span>
-                            </a>
-                        </li>
+            </ul>
+        </div>
+
+
+    </nav>-->
+
+    <div class="navbar navbar-inverse navbar-twitch" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <span class="small-nav"> <span class="logo"></span> </span>
+                    <span class="full-nav"> < Bootsnipp > </span>
+                </a>
+            </div>
+            <div class="">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="#">
+                            <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Home">
+                                <span class="glyphicon glyphicon-home"></span>
+                            </span>
+                            <span class="full-nav"> Home </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#!/solicitudtarjeta">
+                            <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Solicitud tarjeta">
+                                <span class="glyphicon glyphicon-credit-card"></span>
+                            </span>
+                            <span class="full-nav">Registrar tarjeta de nuevo cliente</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#!/solicitudtarjetaextension">
+                            <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Solicitar tarjeta extension">
+                                <span class="glyphicon glyphicon-shopping-cart"></span>
+                            </span>
+                            <span class="full-nav"> Solicitar tarjeta extension </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#!/tarjetas">
+                            <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Tarjetas">
+                                <span class="glyphicon glyphicon-credit-card"></span>
+                            </span>
+                            <span class="full-nav"> Tarjetas</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#!/reportes">
+                            <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Reportes">
+                                <span class="glyphicon glyphicon-signal"></span>
+                            </span>
+                            <span class="full-nav"> Reportes</span>
+                        </a>
+                    </li>
 
                         <li>
                             <a href="#!/login?logout=true">
@@ -132,15 +142,14 @@
                             <a href="#">Gestion de parametros</a>
                         </li>
 
-                    </ul>
-                </div><!--/.nav-collapse -->
-            </div>
+                </ul>
+            </div><!--/.nav-collapse -->
         </div>
+    </div>
 
-        
-        <div class="contenido_pagina" ng-view></div>
-        <footer>            
-        </footer>
-   
+
+    <div class="contenido_pagina" ng-view></div>
+    <footer></footer>
+
 </body>
 </html>

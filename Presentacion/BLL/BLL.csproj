@@ -44,6 +44,7 @@
     <Compile Include="BLLLogin.cs" />
     <Compile Include="BLLTarjeta.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="BLLHistoricoSolicitudTarjeta.cs" />
     <Compile Include="Mapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

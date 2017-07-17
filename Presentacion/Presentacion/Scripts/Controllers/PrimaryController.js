@@ -30,6 +30,12 @@ app.config(function ($routeProvider) {
             controller: 'ReportesController'
         })
 
+        .when('/tarjetas',
+        {
+            templateUrl: 'Tarjetas.html',
+            controller: 'TarjetasController'
+        })
+
         .otherwise({
             redirectTo: '/'
         });

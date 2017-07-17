@@ -14,22 +14,27 @@ namespace DAL
         {
             try
             {
-
                 _db.Tarjeta.Add(tarjeta);
                 _db.Entry(tarjeta.Cliente).State = System.Data.Entity.EntityState.Modified;
                 _db.SaveChanges();
-
             }
             catch (Exception ex)
             {
-                ErrorLogger.WriteErrorLog(ex.Message,ex.ToString());
-           
-               
+                ErrorLogger.WriteErrorLog(ex.Message, ex.ToString());
             }
-
-
         }
 
-       
+        public Tarjeta[] ObtenerTarjetas()
+        {
+            try
+            {
+                return _db.Tarjeta.ToArray();
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.WriteErrorLog(ex.Message, ex.ToString());
+            }
+            return null;
+        }
     }
 }
