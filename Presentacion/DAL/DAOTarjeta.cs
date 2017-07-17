@@ -28,7 +28,7 @@ namespace DAL
         {
             try
             {
-                return _db.Tarjeta.ToArray();
+                return _db.Tarjeta.Take(25).ToArray();
             }
             catch (Exception ex)
             {

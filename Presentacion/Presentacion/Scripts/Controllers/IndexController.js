@@ -1,18 +1,29 @@
 ﻿angular.module('app').controller("IndexController", ["$scope", "$location", "TarjetasService", "LoginService",
     function ($scope, $location, TarjetasService, LoginService) {
-    $scope.Titulo = "Sistema de gestion de tarjetas de credito";
-    $scope.VerTitulo = true;
+        $scope.Titulo = "Sistema de gestion de tarjetas de credito";
+        $scope.VerTitulo = true;
+        $scope.skip = 0;
+        $scope.ListaClientes = [];
+        $scope.VerClientes = function () {
+            TarjetasService.ObtenerClientes($scope.skip).then(function (response) {
+                if ($scope.ListaClientes.length > 0) {
+                    $scope.ListaClientes.push(response.data);
+                } else {
+                    $scope.ListaClientes = response.data;
+                }
 
-    $scope.VerClientes = function () {
-        TarjetasService.ObtenerClientes().then(function (response) {
-            $scope.ListaClientes = response.data;
-        },
-            function (error) {
+            },
+                function (error) {
 
-            }
+                }
 
-        );
-    }
+            );
+        }
 
-   $scope.VerClientes();
+        $scope.VerMas = function () {
+            $scope.skip = $scope.skip + 9;
+            $scope.VerClientes();
+        }
+
+        $scope.VerClientes();
     }]);

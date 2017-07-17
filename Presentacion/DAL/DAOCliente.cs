@@ -56,11 +56,11 @@ namespace DAL
             }
         }
 
-        public Cliente[] GetAll()
+        public Cliente[] GetAll(int skip)
         {
             try
             {
-                return _db.Cliente.ToArray();
+                return _db.Cliente.OrderBy(i => i.DNI).Skip(skip).Take(9).ToArray();
             }
             catch (Exception ex)
             {

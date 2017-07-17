@@ -12,10 +12,11 @@
 
     };
 
-    service.ObtenerClientes = function () {
+    service.ObtenerClientes = function (skip) {
         var promise = $http({
             method: 'GET',
-            url: '/Tarjetas/ObtenerClientes'
+            url: '/Tarjetas/ObtenerClientes',
+            params: {skip: skip}
         });
 
         return $q.when(promise);

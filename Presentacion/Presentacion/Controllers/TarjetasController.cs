@@ -22,11 +22,11 @@ namespace Presentacion.Controllers
             return Newtonsoft.Json.JsonConvert.SerializeObject(bll.ObtenerTarjetas());
         }
 
-        public string ObtenerClientes()
+        public string ObtenerClientes(int skip)
         {
             BLL.BLLTarjeta bll = new BLL.BLLTarjeta();
 
-            return Newtonsoft.Json.JsonConvert.SerializeObject(bll.ObtenerClientes());
+            return Newtonsoft.Json.JsonConvert.SerializeObject(bll.ObtenerClientes(skip));
         }
     }
 }

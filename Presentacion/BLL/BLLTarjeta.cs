@@ -35,10 +35,10 @@ namespace BLL
             return tarjetas;
         }
 
-        public object ObtenerClientes()
+        public object ObtenerClientes(int skip)
         {
             DAL.DAOCliente dao = new DAL.DAOCliente();
-            DAL.Cliente[] listadal = dao.GetAll();
+            DAL.Cliente[] listadal = dao.GetAll(skip);
             Cliente[] clientes = new Cliente[listadal.Length];
 
             for (int i = 0; i < listadal.Length; i++)
