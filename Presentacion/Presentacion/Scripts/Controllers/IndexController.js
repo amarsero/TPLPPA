@@ -7,7 +7,11 @@
         $scope.VerClientes = function () {
             TarjetasService.ObtenerClientes($scope.skip).then(function (response) {
                 if ($scope.ListaClientes.length > 0) {
-                    $scope.ListaClientes.push(response.data);
+
+                    for (var i = 0; i < response.data.length; i++) {
+                        $scope.ListaClientes.push(response.data[i]);
+                    }
+
                 } else {
                     $scope.ListaClientes = response.data;
                 }
