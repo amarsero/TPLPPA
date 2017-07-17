@@ -24,11 +24,11 @@ namespace DAL
             }
         }
 
-        public Tarjeta[] ObtenerTarjetas()
+        public Tarjeta[] ObtenerTarjetas(int skip)
         {
             try
             {
-                return _db.Tarjeta.Take(25).ToArray();
+                return _db.Tarjeta.OrderBy(i=> i.DNICliente).Skip(skip).Take(20).ToArray();
             }
             catch (Exception ex)
             {

@@ -24,7 +24,7 @@
                 eval(response.data);
             },
                     function (error) {
-                        alert("wow la cagamo");
+                       
                     }
 
                 );
@@ -35,7 +35,7 @@
                 eval(response.data);
             },
                     function (error) {
-                        alert("wow la cagamo");
+                       
                     }
 
                 );

@@ -2,10 +2,11 @@
 
     var service = {};
 
-    service.ObtenerTarjetas = function () {
+    service.ObtenerTarjetas = function (skip) {
         var promise = $http({
             method: 'GET',
-            url: '/Tarjetas/ObtenerTarjetas'
+            url: '/Tarjetas/ObtenerTarjetas',
+            params: { skip: skip }
         });
 
         return $q.when(promise);

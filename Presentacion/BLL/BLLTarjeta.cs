@@ -21,10 +21,10 @@ namespace BLL
             dao.AgregarTarjeta(tarjetita);
         }
 
-        public Tarjeta[] ObtenerTarjetas()
+        public Tarjeta[] ObtenerTarjetas(int skip)
         {
             DAL.DAOTarjeta dao = new DAL.DAOTarjeta();
-            DAL.Tarjeta[] listadal = dao.ObtenerTarjetas();
+            DAL.Tarjeta[] listadal = dao.ObtenerTarjetas(skip);
             Tarjeta[] tarjetas = new Tarjeta[listadal.Length];
 
             for (int i = 0; i < listadal.Length; i++)

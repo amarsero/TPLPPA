@@ -15,11 +15,11 @@ namespace Presentacion.Controllers
             return View();
         }
 
-        public string ObtenerTarjetas()
+        public string ObtenerTarjetas(int skip)
         {
             BLL.BLLTarjeta bll = new BLL.BLLTarjeta();
 
-            return Newtonsoft.Json.JsonConvert.SerializeObject(bll.ObtenerTarjetas());
+            return Newtonsoft.Json.JsonConvert.SerializeObject(bll.ObtenerTarjetas(skip));
         }
 
         public string ObtenerClientes(int skip)
